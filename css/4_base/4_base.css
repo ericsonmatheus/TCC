@@ -1,0 +1,206 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 'Open Sans', sans-serif;
+	font-display: fallback;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#container{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "cabecalho cabecalho"
+						 "menu		menu"
+						 "conteudo	conteudo"
+						 "rodape	rodape";
+
+
+}
+
+.cabecalho{
+	grid-area: cabecalho;
+	display: flex;
+	height: 50px;
+	width: 100%;
+	margin:0;
+	padding: 0 25px 0 0;
+	min-width: 550px;
+	background: beige;
+}
+
+.telefone{
+	flex-grow: 1;
+	
+}
+
+.menu{
+	grid-area: menu;
+	display: flex;
+	height: 40px;
+	width: 80%;
+	margin: 25px auto;
+	min-width: 550px;
+}
+
+#navigation{
+	flex-grow: 1;
+}
+
+.conteudo{
+	grid-area: conteudo;
+	width: 80%;
+	margin: 25px auto;
+	min-width: 550px;
+}
+
+.rodape{
+	grid-area: rodape;
+	width: 80%;
+	margin: 25px auto;
+	min-width: 550px;
+}
+
+/* css login*/
+
+.container-login{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: #ecf0f1 ;
+}
+.content{
+	border-radius: 15px;
+	background: #fff;
+	height: 70%;
+	width: 60%;
+	justify-content: space-between;
+	align-items: center;	
+
+}
+
+.content::before{
+	content: "";
+	position: absolute;
+	width: 60%;
+	height: 100%;
+	background: orange;
+	border-radius: 15px 0 0 15px;
+}
+.first-content{
+	position: relative;
+	display: grid;
+	display: flex;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "first-column" "second-column";
+	text-align: center;
+	
+}
+
+.first-column{
+	grid-area: first-column;
+	flex-grow:1;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	
+}
+
+.second-column{
+	grid-area: second-column;
+	text-align: center;
+	padding: 15px;
+	
+}
+
+
+.second-content{
+	position: absolute;
+	display: none;
+}
+.third-content{
+	position: absolute;
+	display: none;
+}
+
+.form{
+	display: flex;
+	flex-direction: column;
+}
+
+.title{
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+.title-primary{
+	color: #fff;
+}
+
+.txt{
+	text-decoration: none;
+
+}
+
+.txt-primary{
+	color: #fff;
+}
+
+.txt-thrid{
+	color: #F4891F;
+}
+
+.form input{
+	height: 45px;
+	border: none;
+	background-color: #fff;
+	margin-top: 5px;
+}
+
