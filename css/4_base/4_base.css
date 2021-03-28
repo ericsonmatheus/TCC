@@ -60,6 +60,8 @@ table {
 						 "conteudo	conteudo"
 						 "rodape	rodape";
 
+						 min-width: 550px;
+
 
 }
 
@@ -114,15 +116,19 @@ table {
 	align-items: center;
 	height: 100vh;
 	background: #ecf0f1 ;
+	
 }
 .content{
 	border-radius: 15px;
 	background: #fff;
-	height: 70%;
+	height: 80%;
 	width: 60%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "first-column" "second-column";
 	justify-content: space-between;
 	align-items: center;	
-
+	position: relative;
 }
 
 .content::before{
@@ -132,21 +138,22 @@ table {
 	height: 100%;
 	background: orange;
 	border-radius: 15px 0 0 15px;
+
+	left: 0;
 }
 .first-content{
-	position: relative;
-	display: grid;
-	display: flex;
-	grid-template-columns: 1fr 1fr;
-	grid-template-areas: "first-column" "second-column";
-	text-align: center;
-	
+	display: flex;	
 }
+
+.first-content .second-column {
+    z-index: 11;
+}
+
 
 .first-column{
 	grid-area: first-column;
-	flex-grow:1;
-	z-index: 2;
+	width: 60%;
+	z-index: 10;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -156,18 +163,20 @@ table {
 .second-column{
 	grid-area: second-column;
 	text-align: center;
-	padding: 15px;
+	padding: 10px;
+	width: 40%;
 	
 }
 
 
 .second-content{
+	display: flex;
 	position: absolute;
-	display: none;
+	
 }
 .third-content{
 	position: absolute;
-	display: none;
+	display: flex;
 }
 
 .form{
@@ -189,18 +198,156 @@ table {
 
 }
 
-.txt-primary{
-	color: #fff;
-}
 
-.txt-thrid{
-	color: #F4891F;
-}
+
 
 .form input{
 	height: 45px;
 	border: none;
 	background-color: #fff;
-	margin-top: 5px;
+	width: 100%;
+	
 }
 
+input:-webkit-autofill{
+	-webkit-box-shadow: 0 0 100px #ecf0f1 inset !important;
+	-webkit-text-fill-color: #000 im !important; 
+}
+
+.label-input{
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	margin: 5px;
+}
+
+.icon-modify{
+	padding: 0 5px;
+	border-radius: 25px;
+	background-color: #fff;
+}
+
+
+.second-content .first-column{
+	order: 2;
+	z-index: -1;
+}
+
+.second-content .second-column{
+	order: 1;
+	z-index: -1;
+}
+
+.third-content .first-column{
+	z-index: -1;
+}
+
+.third-content .second-column{
+	z-index: -11;
+}
+
+
+
+
+.sign-up-js .first-content .first-column {
+    z-index: -1;
+}
+
+.sign-up-js .first-content .second-column {
+    z-index: -1;
+}
+
+.sign-up-js .second-content .second-column {
+    z-index: 11;
+}
+.sign-up-js .second-content .first-column {
+    z-index: 13;
+}
+
+.sign-up-js .content::before {
+    left: 40%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    animation: slidein 1.5s; /*MODIFIQUEI DE 3s PARA 1.3s*/
+
+    z-index: 12;
+}
+
+.next-js .first-content .first-column {
+    z-index: -1;
+}
+
+.next-js .first-content .second-column {
+    z-index: -1;
+}
+
+.next-js .second-content .second-column {
+    z-index: -1;
+}
+.next-js .second-content .first-column {
+    z-index: -1;
+}
+
+.next-js .third-content .second-column {
+    z-index: 11;
+}
+.next-js .third-content .first-column {
+    z-index: 13;
+}
+
+.next-js .content::before {
+    left: 0;
+    border-radius: 15px 0 0 15px;
+    animation: slideout 1.5s; /*MODIFIQUEI DE 3s PARA 1.3s*/
+    z-index: 13;
+}
+
+/* Animação CSS*/
+
+@keyframes slidein{
+	from{
+		left: 0;
+		width: 60%;
+	}
+	25%{
+		left:  5%;
+		width: 50%;
+	}
+	50%{
+		left: 25%;
+		width: 60%
+	}
+	75%{
+		left: 45%;
+		width: 50%
+	}
+	to{
+		left: 40%;
+		width: 60%;
+	}
+}
+
+@keyframes slideout{
+	from{
+		left: 40%;
+		width: 60%;
+	}
+	25%{
+		left:  45%;
+		width: 50%;
+	}
+	50%{
+		left: 25%;
+		width: 60%
+	}
+	75%{
+		left: 5%;
+		width: 50%
+	}
+	to{
+		left: 0;
+		width: 60%;
+	}
+}

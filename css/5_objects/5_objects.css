@@ -40,9 +40,12 @@
     font-weight: bold;
     
     
+    
 }
+
 .btn:hover{
     background-color: #42B72A;
+    transition: background-color 1s;
     
 }
 
@@ -82,3 +85,21 @@ p{
     text-align: center;
     color: #fff;
 }
+
+.txt-primary{
+	color: #fff;
+}
+
+.txt-primary:hover{
+    color: #42B72A;
+}
+
+
+.txt-thrid{
+	color: #F4891F;
+}
+
+.txt-thrid:hover{
+    color: #42B72A;
+}
+
