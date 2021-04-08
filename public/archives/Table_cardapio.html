@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="container">
+        <header class="cabecalho">
+            <ul>
+                <li><a href="#"><img src="img/telefone.png" alt="Telefone"> 61-000-000</a></li>
+                <li class="item-menu"><a href="#"><img src="img/instagram.png" alt="Instagram"></a></li>
+                <li class="item-menu"><a href="#"><img src="img/whatsapp.png" alt="Whatsapp"></a></li>
+            </ul>
+        </header>
+        <nav class="menu">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg ">
+                    <a class="navbar-brand" href="#">Inicio</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Cardapio<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Localização</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sobre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Fale conosco</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <button type="button" class="btn btn-login">Login</button>
+                            <button type="button" class="btn btn-bag">Sacola</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        <section class="conteudo">
+            <div class="container">
+                <h2>Cardapio</h2>
+                <div class="container">
+                    <button type="button" id="addCardapio" class="btn btn-outline-success ">Adicionar ao Cardapio</button>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th colspan="3" scope="col">Item</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td colspan="3"><img width="145px" height="145px"
+                                        src="/public/archives/img/Hamburguer.jfif" alt="Hamburguer"> Porção de carde
+                                </td>
+                                <td>R$ 15,99</td>
+                                <td><button type="button" class="btn btn-danger btn-sm">Remover</button> <button
+                                        type="button" class="btn btn-success btn-sm">Editar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <article class="adicionar">
+            <div class="container">
+
+                <div class="first">
+                    <form>
+                        <h2>Nome do prato</h2>
+                        <div class="form-group">
+                            <label for="categoria">Categoria</label>
+                            <select class="form-control" name="categoria" id="categoria">
+                                <option value="#"></option>
+                                <option>add</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomePrato">Nome do Prato</label>
+                            <input type="text" class="form-control" name="nomePrato" id="nomePrato"
+                                placeholder="Nome do Prato">
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+                            <textarea class="form-control" id="descricao" rows="4"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="second">
+                    <button class="image">
+                        <img src="/public/archives/img/image.png" alt="">
+                    </button>
+                    <form>
+
+                        <label for="valor">Valor</label>
+                        <div class="input-group mb-3">
+  
+                            <input type="text" class="form-control" id="valor" aria-describedby="valor">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="valor">$</span>
+                            </div>
+                        </div>
+                        
+                        <label for="selecione">Selecione</label>
+                        <div class="input-group mb-3">
+                                <select class="form-control" name="complementos" id="complementos">
+                                    <option value="#"></option>
+                                    <option>add</option>
+                                </select>
+    
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="selecione">Selecione</span>
+                                </div>
+                        </div>
+                            
+                    </form>
+                            <button type="button"  class="btn btn-success">Cadastrar</button>
+                            <button type="button" class="btn btn-danger">Cancelar</button>
+                    
+                </div>
+            </div>
+        </article>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+</script>
+<script src="/js/login.js"></script>
+
+</html>

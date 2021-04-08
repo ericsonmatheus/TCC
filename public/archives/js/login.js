@@ -11,3 +11,11 @@ btnSignup.addEventListener("click", function(){
 btnNext.addEventListener("click", function(){
     body.className = "next-js";
 })
+
+
+var addCardapio = document.querySelector("#addCardapio");
+var body = document.querySelector("body");
+
+addCardapio.addEventListener("click", function(){
+    body.className = "openCardapio";
+})

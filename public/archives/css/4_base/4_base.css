@@ -68,6 +68,7 @@ table {
 .cabecalho{
 	grid-area: cabecalho;
 	display: flex;
+	display: inline-block;
 	height: 50px;
 	width: 100%;
 	margin:0;
@@ -107,6 +108,11 @@ table {
 	margin: 25px auto;
 	min-width: 550px;
 }
+
+
+
+
+
 
 /* css login*/
 
@@ -279,6 +285,9 @@ input:-webkit-autofill{
     z-index: -1;
 }
 
+.openCardapio .adicionar {
+    display: block;
+}
 .next-js .first-content .second-column {
     z-index: -1;
 }

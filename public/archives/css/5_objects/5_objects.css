@@ -1,4 +1,4 @@
-.cabecalho > ul > li{
+#cabecalho > ul > li{
     display: inline-block;
 }
 .telefone > ul > li > a{
@@ -20,6 +20,55 @@
     transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
 }
+
+.adicionar{
+    display: none;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+    width:100% ;
+    opacity: 90%;
+	background: #000000 ;
+    position:fixed;
+}
+.adicionar > .container{
+    border-radius: 15px;
+	background: #fff;
+	height: 80%;
+	width: 60%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "first" "second";
+	
+
+}
+.first{
+    padding: 5px;
+}
+
+.second{
+    padding: 5px;
+}
+
+
+
+
+.image{
+    padding: 10px 50px 10px 50px;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.16); 
+    border: 1 solid #fff;
+}
+
+
+
+  
+
+
+
+
+
+
 
 
 /* tela login*/
