@@ -285,9 +285,6 @@ input:-webkit-autofill{
     z-index: -1;
 }
 
-.openCardapio .adicionar {
-    display: block;
-}
 .next-js .first-content .second-column {
     z-index: -1;
 }

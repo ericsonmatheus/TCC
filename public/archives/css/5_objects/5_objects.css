@@ -21,8 +21,8 @@
     -webkit-transition: all .3s ease-in-out;
 }
 
-.adicionar{
-    display: none;
+#adicionar{
+    display:none;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
@@ -31,7 +31,7 @@
 	background: #000000 ;
     position:fixed;
 }
-.adicionar > .container{
+#adicionar > .container{
     border-radius: 15px;
 	background: #fff;
 	height: 80%;
