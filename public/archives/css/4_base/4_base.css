@@ -52,308 +52,43 @@ table {
 	border-spacing: 0;
 }
 
-#container{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-areas: "cabecalho cabecalho"
-						 "menu		menu"
-						 "conteudo	conteudo"
-						 "rodape	rodape";
-
-						 min-width: 550px;
-
-
+.form-group{
+	margin-top: 25px;
 }
 
-.cabecalho{
-	grid-area: cabecalho;
-	display: flex;
-	display: inline-block;
-	height: 50px;
-	width: 100%;
-	margin:0;
-	padding: 0 25px 0 0;
-	min-width: 550px;
-	background: beige;
+.navbar{
+	padding: 0 15px;
+}
+header{
+	background: orange;	
 }
 
-.telefone{
-	flex-grow: 1;
-	
-}
-
-.menu{
-	grid-area: menu;
-	display: flex;
-	height: 40px;
-	width: 80%;
-	margin: 25px auto;
-	min-width: 550px;
-}
-
-#navigation{
-	flex-grow: 1;
-}
-
-.conteudo{
-	grid-area: conteudo;
-	width: 80%;
-	margin: 25px auto;
-	min-width: 550px;
-}
-
-.rodape{
-	grid-area: rodape;
-	width: 80%;
-	margin: 25px auto;
-	min-width: 550px;
-}
-
-
-
-
-
-
-/* css login*/
-
-.container-login{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	background: #ecf0f1 ;
-	
-}
-.content{
-	border-radius: 15px;
-	background: #fff;
-	height: 80%;
-	width: 60%;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-areas: "first-column" "second-column";
-	justify-content: space-between;
-	align-items: center;	
-	position: relative;
-}
-
-.content::before{
-	content: "";
-	position: absolute;
-	width: 60%;
-	height: 100%;
+#menu{
 	background: orange;
-	border-radius: 15px 0 0 15px;
-
+	height: 100%;
+	width: 0px;
+	position: fixed;
+	top: 0;
 	left: 0;
-}
-.first-content{
-	display: flex;	
-}
-
-.first-content .second-column {
-    z-index: 11;
-}
-
-
-.first-column{
-	grid-area: first-column;
-	width: 60%;
-	z-index: 10;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+	overflow: hidden;
 	
 }
 
-.second-column{
-	grid-area: second-column;
-	text-align: center;
-	padding: 10px;
-	width: 40%;
-	
-}
-
-
-.second-content{
-	display: flex;
-	position: absolute;
-	
-}
-.third-content{
-	position: absolute;
-	display: flex;
-}
-
-.form{
-	display: flex;
-	flex-direction: column;
-}
-
-.title{
-	font-size: 24px;
-	font-weight: bold;
-	text-transform: capitalize;
-}
-.title-primary{
+nav a{
 	color: #fff;
-}
-
-.txt{
+	font-size: 25px;
+	display: block;
+	padding: 12px 10px 12px 10px;
 	text-decoration: none;
-
-}
-
-
-
-
-.form input{
-	height: 45px;
-	border: none;
-	background-color: #fff;
-	width: 100%;
 	
 }
 
-input:-webkit-autofill{
-	-webkit-box-shadow: 0 0 100px #ecf0f1 inset !important;
-	-webkit-text-fill-color: #000 im !important; 
+#menu a:hover{
+	color: orange;
+	background: #fff;
 }
 
-.label-input{
-	background-color: #fff;
-	display: flex;
-	align-items: center;
-	margin: 5px;
-}
-
-.icon-modify{
-	padding: 0 5px;
-	border-radius: 25px;
-	background-color: #fff;
-}
-
-
-.second-content .first-column{
-	order: 2;
-	z-index: -1;
-}
-
-.second-content .second-column{
-	order: 1;
-	z-index: -1;
-}
-
-.third-content .first-column{
-	z-index: -1;
-}
-
-.third-content .second-column{
-	z-index: -11;
-}
-
-
-
-
-.sign-up-js .first-content .first-column {
-    z-index: -1;
-}
-
-.sign-up-js .first-content .second-column {
-    z-index: -1;
-}
-
-.sign-up-js .second-content .second-column {
-    z-index: 11;
-}
-.sign-up-js .second-content .first-column {
-    z-index: 13;
-}
-
-.sign-up-js .content::before {
-    left: 40%;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    animation: slidein 1.5s; /*MODIFIQUEI DE 3s PARA 1.3s*/
-
-    z-index: 12;
-}
-
-.next-js .first-content .first-column {
-    z-index: -1;
-}
-
-.next-js .first-content .second-column {
-    z-index: -1;
-}
-
-.next-js .second-content .second-column {
-    z-index: -1;
-}
-.next-js .second-content .first-column {
-    z-index: -1;
-}
-
-.next-js .third-content .second-column {
-    z-index: 11;
-}
-.next-js .third-content .first-column {
-    z-index: 13;
-}
-
-.next-js .content::before {
-    left: 0;
-    border-radius: 15px 0 0 15px;
-    animation: slideout 1.5s; /*MODIFIQUEI DE 3s PARA 1.3s*/
-    z-index: 13;
-}
-
-/* Animação CSS*/
-
-@keyframes slidein{
-	from{
-		left: 0;
-		width: 60%;
-	}
-	25%{
-		left:  5%;
-		width: 50%;
-	}
-	50%{
-		left: 25%;
-		width: 60%
-	}
-	75%{
-		left: 45%;
-		width: 50%
-	}
-	to{
-		left: 40%;
-		width: 60%;
-	}
-}
-
-@keyframes slideout{
-	from{
-		left: 40%;
-		width: 60%;
-	}
-	25%{
-		left:  45%;
-		width: 50%;
-	}
-	50%{
-		left: 25%;
-		width: 60%
-	}
-	75%{
-		left: 5%;
-		width: 50%
-	}
-	to{
-		left: 0;
-		width: 60%;
-	}
+#fecharMenu{
+	margin-top: 53px;
+	margin-bottom: 50px;
 }
