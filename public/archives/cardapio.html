@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Cardapio</title>
 
     <link rel="stylesheet" href="CSS/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -26,8 +26,8 @@
     </header>
     <nav id="menu">
         <a id="fecharMenu"><i class="fas fa-bars"> Fechar</i></a>
-        <a href="#">Home</a>
-        <a href="/public/archives/cardapio.html">Cardapio</a>
+        <a href="/public/archives/index.html">Home</a>
+        <a href="#">Cardapio</a>
         <a href="#">Carteira</a>
         <a href="#">Sobre</a>
         <a href="#">Contato</a>
@@ -35,19 +35,17 @@
     </nav>
     <section>
         <div class="container">
-            <p><i class="fas fa-map-marked-alt"></i> Q 106 - Recanto das Emas, Brasília - DF, 72601-202</p>
-            <p><i class="fas fa-map-marker-alt"></i> Seu local</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Cardapio</li>
+                </ol>
+              </nav>
+            
 
             <form>
-
-                <button type="button" class="button-large btn  btn-lg btn-block"><i class="fas fa-location-arrow"></i> Selecione seu
-                    endereço</button>
-
-                <div class="form-group">
-                    <select class="form-control form-control-lg">
-                        <option>selecione uma categoria</option>
-                    </select>
-                </div>
+                <a id="show" class="btn btn-outline-success"><i class="fas fa-plus-square"></i> Adicionar</a>
+                
             </form>
             <table class="table">
                 <tbody>
@@ -65,18 +63,45 @@
                 </tbody>
             </table>
         </div>
+        <div class="container">
+            <div id="adicionar">
+                <h2>Nome</h2>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Detalhes</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Complementos</a>
+                    </li>
+                    
+                </ul>
+
+            <div class="Detalhes">
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>selecione uma categoria</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nomePrato">Nome do prato</label>
+                    <input type="text" class="form-control" id="nomePrato" placeholder="Nome do prato">
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" id="descricao" rows="3"></textarea>
+                  </div>      
+            </div>
+            <button type="button" id="close" class="btn btn-danger">Fechar</button>
+            <button type="button" class="btn btn-success">Adicionar</button>
+                
+            </div>
+        </div>
     </section>
     
     <footer>
         
     </footer>
-    <a class="cart">
-        <div class="cart-info">
-            <div><i class="fas fa-shopping-basket"></i></div>
-            <div><p>Meu carrinho</p></div>
-            <div class="price">19,99</div>
-        </div>
-    </a>
+    
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
