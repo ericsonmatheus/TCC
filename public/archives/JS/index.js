@@ -33,3 +33,31 @@ close.addEventListener('click', function(){
     adicionarCardapio.style.padding = '0px'
 })
 
+
+var btnDetalhes = document.getElementById('btnDetalhes')
+var btnComplemento = document.getElementById('btnComplemento')
+var detalhes = document.getElementById('detalhes')
+var complemento = document.getElementById('complemento')
+
+btnComplemento.addEventListener('click', function(){
+    detalhes.style.display = 'none'
+    complemento.style.display = 'block'
+})
+
+btnDetalhes.addEventListener('click', function(){
+    detalhes.style.display = 'block'
+    complemento.style.display = 'none'
+})
+
+
+var btnNovoComplemento = document.getElementById('btnNovoComplemento')
+var adicionarComplemento = document.getElementById('adicionarComplemento')
+var novoComplemento = document.getElementById('novoComplemento')
+
+btnNovoComplemento.addEventListener('click', function(){
+    novoComplemento.style.display = 'block'
+})
+
+adicionarComplemento.addEventListener('click', function(){
+    novoComplemento.style.display = 'none'
+})

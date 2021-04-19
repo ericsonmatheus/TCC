@@ -118,11 +118,33 @@ tbody{
 	overflow: hidden;
 	text-decoration: none;
 	color: #fff;
+	overflow:auto;
 }
 
+#adicionar button{
+	margin: 20px 0px 0px 10px;
+	float: right;
+	
+}
 
 #adicionar a{
 	color: #fff;
+}
+
+
+#complemento{
+	display: none;
+}
+
+#complemento table{
+	border: 1 solid #fff;
+	overflow: auto;
+	height: 300px;
+	width: 100%;
+}
+
+#novoComplemento{
+	display: none;
 }
 
 @media screen and (min-width: 500px) {
