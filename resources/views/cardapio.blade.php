@@ -1,38 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardapio</title>
-
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-</head>
-
-<body>
-    <header>
-        <nav class="navbar">
-            <a class="form-inline" id="abrirMenu"><i class="fas fa-bars"></i></a>
-            <img src="img/logo.png" width="150px" height="150px" alt="">
-            <a class="form-inline" href="">
-                <i class="fas fa-search"></i>
-            </a>
-        </nav>
-    </header>
-    <nav id="menu">
-        <a id="fecharMenu"><i class="fas fa-bars"> Fechar</i></a>
-        <a href="/public/archives/index.html">Home</a>
-        <a href="#">Cardapio</a>
-        <a href="/public/archives/carteira.html">Carteira</a>
-        <a href="#">Sobre</a>
-        <a href="#">Contato</a>
-        <a href="#">Configurações</a>
-    </nav>
+@include('header')
     <section>
         <div class="container">
             <nav aria-label="breadcrumb">
@@ -53,7 +19,7 @@
                         <h2>Hamburguer</h2>
                     </td>
                     <tr>
-                        <td width="80px" height="80px"><img src="IMG/Hamburguer.jfif" alt="Hamburguer"></td>
+                        <td width="80px" height="80px"><img src=" {{ asset('img/hamburguer.png') }}" alt="Hamburguer"></td>
                         <td colspan="3">
                             <h2>X - Tudo</h2>
                             <p>Salada, alface, 2 carne de 250g</p>
@@ -86,7 +52,7 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><img width="100px" height="100px"
-                                        src="/public/archives/IMG/img.png" alt="">
+                                        src="{{ asset('img/img.png') }}" alt="">
                                     <P>Arraste uma imagem</P>
                                     <p>-ou-</p>
                                 </p>
@@ -167,9 +133,4 @@
     </footer>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-</script>
-<script src="JS/index.js"></script>
-
-</html>
+@include('footer')

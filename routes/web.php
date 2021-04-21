@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [AdmController::class, 'formLogin'])->name('adm.login');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AdmController::class, 'index'])->name('adm.index');
+Route::get('/carteira', [AdmController::class, 'wallet'])->name('adm.carteira');
+Route::get('/cardapio', [AdmController::class, 'menu'])->name('adm.cardapio');
+Route::get('/login', [AdmController::class, 'login'])->name('adm.login');
