@@ -29,8 +29,8 @@
         <a href="/public/archives/index.html">Home</a>
         <a href="/public/archives/cardapio.html">Cardapio</a>
         <a href="/public/archives/carteira.html">Carteira</a>
-        <a href="#">Sobre</a>
-        <a href="#">Contato</a>
+        <a href="/public/archives/sobre.html">Sobre</a>
+        <a href="/public/archives/contato.html">Contato</a>
         <a href="#">Configurações</a>
     </nav>
     <section>
@@ -40,20 +40,34 @@
 
             <form>
 
-                <button type="button" class="button-large btn  btn-lg btn-block"><i class="fas fa-location-arrow"></i> Selecione seu
-                    endereço</button>
+                <a href="/public/archives/localizacao.html" type="button" class="button-large btn  btn-lg btn-block"><i class="fas fa-location-arrow"></i> Selecione seu
+                    endereço</a>
+
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">#hamburguer</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">#Refri</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">#Batata</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">#Combos</a>
+                        </li>
+                      </ul>
 
                 <div class="form-group">
-                    <select class="form-control form-control-lg">
-                        <option>selecione uma categoria</option>
-                    </select>
+                    
+                        <input class="form-control" style="justify-items: center;" type="text" name="pesquisa" id="pesquisa" placeholder="Pesquisa"> 
                 </div>
             </form>
             <table class="table">
                 <tbody>
                     <td><h2>Hamburguer</h2></td>
                     <tr>
-                        <td width="80px" height="80px" ><img  src="IMG/Hamburguer.jfif" alt="Hamburguer"></td>
+                        <td width="80px" height="80px" min-width="55px" min-height="55px" ><img  src="IMG/Hamburguer.jfif" alt="Hamburguer"></td>
                         <td colspan="3">
                             <h2>X - Tudo</h2>
                             <p>Salada, alface, 2 carne de 250g</p>
@@ -70,7 +84,7 @@
     <footer>
         
     </footer>
-    <a class="cart">
+    <a href="/public/archives/carrinho.html" class="cart">
         <div class="cart-info">
             <div><i class="fas fa-shopping-basket"></i></div>
             <div><p>Meu carrinho</p></div>
