@@ -152,3 +152,12 @@ btnEndereco.addEventListener('click', function(){
     
     showEndereco.style.display = 'block'
 })
+
+var date = document.getElementById('date')
+var rodape = document.getElementById('rodape')
+
+rodape.addEventListener('onload', function(){
+    var d = new Date();
+        var n = d.getFullYear() + "  ";
+         date.innerHTML = n;
+})

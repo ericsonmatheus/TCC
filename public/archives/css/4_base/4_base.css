@@ -159,6 +159,19 @@ tbody{
 	display: block;
 }
 
+footer{
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;
+	background: orange;
+	color: #fff;
+	width: 100%;
+	bottom: 0;
+	height: 50px;
+	padding: 10px;	
+	
+}
+
 
 @media screen and (min-width: 500px) {
 	.tudo {
