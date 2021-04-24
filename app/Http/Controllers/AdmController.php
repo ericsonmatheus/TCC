@@ -17,4 +17,13 @@ class AdmController extends Controller
     public function menu() {
         return view('cardapio');
     }
+    //chamar tela sobre
+    public function about() {
+        return view('sobre');
+    }
+    //chamar tela contato
+    public function contact() {
+        return view('contato');
+    }
+
 }
