@@ -29,7 +29,7 @@
         <a href="{{ route('adm.index')}}">Home</a>
         <a href="{{ route('adm.cardapio') }}">Cardapio</a>
         <a href="{{ route('adm.carteira') }}">Carteira</a>
-        <a href="#">Sobre</a>
-        <a href="#">Contato</a>
+        <a href="{{ route('adm.sobre') }}">Sobre</a>
+        <a href="{{ route('adm.contato') }}">Contato</a>
         <a href="#">Configurações</a>
     </nav>
