@@ -161,3 +161,16 @@ rodape.addEventListener('onload', function(){
         var n = d.getFullYear() + "  ";
          date.innerHTML = n;
 })
+
+function mostrar(e) {
+
+    if (e.classList.contains("")) { //se tem olho aberto
+      e.classList.remove("fas fa-door-open"); //remove classe olho aberto
+      e.classList.add("fas fa-door-closed"); //coloca classe olho fechado
+    } else { //senão
+      e.classList.remove("fas fa-door-closed"); //remove classe olho fechado
+      e.classList.add("fas fa-door-open"); //coloca classe olho aberto
+    }
+
+  }
+
