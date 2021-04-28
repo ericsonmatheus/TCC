@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [AdmController::class, 'index'])->name('adm.index');
 Route::get('/carteira', [AdmController::class, 'wallet'])->name('adm.carteira');
 Route::get('/cardapio', [AdmController::class, 'menu'])->name('adm.cardapio');
 Route::get('/login', [AdmController::class, 'login'])->name('adm.login');
 Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');
 Route::get('/contato', [AdmController::class, 'contact'])->name('adm.contato');
+Route::get('/', [AdmController::class, 'index'])->name('adm.index');
+Route::get('/{categoria}', [AdmController::class, 'listByCategory'])->name('adm.categoria');
+

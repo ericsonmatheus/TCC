@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cardapio;
 use Illuminate\Http\Request;
 
 class AdmController extends Controller
@@ -26,4 +27,8 @@ class AdmController extends Controller
         return view('contato');
     }
 
+    //Função para listar apenas uma categoria de lanche especifico
+    public function listByCategory(String $categoryLunch){
+        $result = Cardapio::where('categoria', '=', $categoryLunch);
+    }
 }

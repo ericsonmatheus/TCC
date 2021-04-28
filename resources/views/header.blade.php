@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title >Index</title>
+    <link rel="icon" 
+      type="image/logo.png" 
+      href="{{ asset('img/logo.png') }}" />
 
     <link rel="stylesheet" href="{{ mix('css/style.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,17 +22,17 @@
         <nav class="navbar">
             <a class="form-inline" id="abrirMenu"><i class="fas fa-bars"></i></a>
             <img src="{{ asset('img/logo.png') }}" width="150px" height="150px" alt="">
-            <a class="form-inline" href="">
-                <i class="fas fa-search"></i>
+            <a class="fas fa-door-open" onclick="mostrar(this)"> ABERTO
             </a>
         </nav>
     </header>
     <nav id="menu">
         <a id="fecharMenu"><i class="fas fa-bars"> Fechar</i></a>
-        <a href="{{ route('adm.index')}}">Home</a>
-        <a href="{{ route('adm.cardapio') }}">Cardapio</a>
-        <a href="{{ route('adm.carteira') }}">Carteira</a>
-        <a href="{{ route('adm.sobre') }}">Sobre</a>
-        <a href="{{ route('adm.contato') }}">Contato</a>
-        <a href="#">Configurações</a>
+        <a href="{{ route('adm.index')}}"><i class="fas fa-home"></i> Home</a>
+        <a href="{{ route('adm.cardapio') }}"><i class="fas fa-list-alt"></i> Cardapio</a>
+        <a href="{{ route('adm.carteira') }}"><i class="fas fa-wallet"></i> Carteira</a>
+        <a href="{{ route('adm.sobre') }}"><i class="fas fa-exclamation-circle"></i> Sobre</a>
+        <a href="{{ route('adm.contato') }}"><i class="fas fa-tty"></i> Contato</a>
+        <a href="#"><i class="fas fa-tools"></i> Configurações</a>
     </nav>
+
