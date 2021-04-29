@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class AdmController extends Controller
 {
-    public function index() {
-        return view('index');
+    public function index($lunch = null) {
+        return view('index', [
+            'lunch' => $lunch
+        ]);
     }
     //Chamar tela carteira
     public function wallet() {
@@ -30,5 +32,7 @@ class AdmController extends Controller
     //Função para listar apenas uma categoria de lanche especifico
     public function listByCategory(String $categoryLunch){
         $result = Cardapio::where('categoria', '=', $categoryLunch);
+
+        return $this->index($result);
     }
 }
