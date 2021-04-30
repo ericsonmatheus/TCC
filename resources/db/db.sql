@@ -17,6 +17,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `burguerboss` DEFAULT CHARACTER SET utf8 ;
 USE `burguerboss` ;
 
+CREATE TABLE IF NOT EXISTS `burguerboss`.`categorias` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `burguerboss`.`lanches`
 -- -----------------------------------------------------
@@ -24,12 +31,14 @@ CREATE TABLE IF NOT EXISTS `burguerboss`.`lanches` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NOT NULL,
-  `imgcomida` BINARY NOT NULL,
+  `pathLanche` VARCHAR(255) NOT NULL,
   `valor` DOUBLE NOT NULL,
-  `categoria` VARCHAR(25) NOT NULL,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
-  PRIMARY KEY (`id`))
+  `idcategoria` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`idcategoria`)
+    REFERENCES `burguerboss`.`categorias` (`id`))
 ENGINE = InnoDB;
 
 
@@ -75,6 +84,11 @@ CREATE TABLE IF NOT EXISTS `burguerboss`.`carrinhos` (
     FOREIGN KEY (`idcomanda`)
     REFERENCES `burguerboss`.`comandas` (`id`)
 );
+
+insert into categorias (nome, tipo) values('Hamburguer','comida');
+insert into categorias (nome, tipo) values('Refrigerante','bebida');
+insert into categorias (nome, tipo) values('Batata','comida');
+insert into categorias (nome, tipo) values('Combo','comida');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

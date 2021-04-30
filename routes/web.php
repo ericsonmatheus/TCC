@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdmController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/carteira', [AdmController::class, 'wallet'])->name('adm.carteira');
+
 Route::get('/cardapio', [AdmController::class, 'menu'])->name('adm.cardapio');
+Route::post('/cardapio/upload', [UploadController::class, 'upload'])->name('adm.upload');
+
 Route::get('/login', [AdmController::class, 'login'])->name('adm.login');
 Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');
 Route::get('/contato', [AdmController::class, 'contact'])->name('adm.contato');
