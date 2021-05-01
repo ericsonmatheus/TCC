@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdmController;
-use App\Http\Controllers\UploadController;
+use App\Http\Controllers\LunchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/carteira', [AdmController::class, 'wallet'])->name('adm.carteira');
 
 Route::get('/cardapio', [AdmController::class, 'menu'])->name('adm.cardapio');
-Route::post('/cardapio/upload', [UploadController::class, 'upload'])->name('adm.upload');
+Route::post('/cardapio/upload', [LunchController::class, 'createLunch'])->name('adm.criarLanche');
 
 Route::get('/login', [AdmController::class, 'login'])->name('adm.login');
 Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cardapio;
 use App\Models\Categoria;
 use App\Models\Lanche;
-use Illuminate\Http\Request;
 
 class AdmController extends Controller
 {
     public function index($lunchs = null) {
+
+        $lunchs = LunchController::getAllLunch();
+
         return view('index', [
-            'lunch' => $lunchs
+            'lunchs' => $lunchs
         ]);
     }
     //Chamar tela carteira
@@ -22,8 +23,10 @@ class AdmController extends Controller
     public function menu() {
 
         $category = $this->getCategories();
+        $lunchs = LunchController::getAllLunch();
 
         return view('cardapio', [
+            'lunchs' => $lunchs,
             'categories' => $category
         ]);
     }
@@ -42,13 +45,6 @@ class AdmController extends Controller
         $result = Categoria::all();
 
         return $result;
-    }
-
-    //Função para listar apenas uma categoria de lanche especifico
-    public function listByCategory(String $categoryLunch){
-        $result = Lanche::where('categoria', '=', $categoryLunch);
-
-        return $this->index($result);
     }
 
 }

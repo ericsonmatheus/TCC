@@ -18,6 +18,6 @@ class Lanche extends Model
         'descricao',
         'pathLanche',
         'valor',
-        'categoria',
+        'idcategoria',
     ];
 }

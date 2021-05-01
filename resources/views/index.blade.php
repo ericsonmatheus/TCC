@@ -35,11 +35,11 @@
 			@foreach ($lunchs as $lunch)
 				<tbody>
 					<td>
-						<h2>{{ $lunch->categoria }}</h2>
+						<h2>{{ $lunch->idcategoria }}</h2>
 					</td>
 					<tr>
 						<td width="80px" height="80px" min-width="55px" min-height="55px"><img
-								src="{{ asset('img/hamburguer.png') }}" alt="Hamburguer"></td>
+								src="{{ env('APP_URL') }}/storage/{{ $lunch->pathLanche }}" alt="Hamburguer"></td>
 						<td colspan="3">
 							<h2>{{ $lunch->nome }}</h2>
 							<p>{{ $lunch->descricao }}</p>
