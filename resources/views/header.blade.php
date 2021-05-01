@@ -34,5 +34,6 @@
         <a href="{{ route('adm.sobre') }}"><i class="fas fa-exclamation-circle"></i> Sobre</a>
         <a href="{{ route('adm.contato') }}"><i class="fas fa-tty"></i> Contato</a>
         <a href="#"><i class="fas fa-tools"></i> Configurações</a>
+        <div class="copyright">&copy; Burguerboss<em id="date"></em>. Todos os direitos reservados.</div>
     </nav>
 

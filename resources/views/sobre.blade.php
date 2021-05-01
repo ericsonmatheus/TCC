@@ -10,10 +10,6 @@
 
 </section>
 
-<footer id="rodape">
-    &copy;Burguerboss<em id="date"></em>. Todos os direitos reservados
-</footer>
-
 </body>
 
 @include('footer')

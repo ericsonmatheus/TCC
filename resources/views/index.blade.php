@@ -54,18 +54,15 @@
 	</div>
 </section>
 
-
 <a href="/public/archives/carrinho.html" class="cart">
-	<div class="cart-info">
-		<div><i class="fas fa-shopping-basket"></i></div>
-		<div>
+		<div class="cart-info">
+			<div><i class="fas fa-shopping-basket"></i></div>
+			<div>
 			<p>Meu carrinho</p>
+			</div>
+			<div class="price">19,99</div>
 		</div>
-		<div class="price">19,99</div>
-	</div>
 </a>
-<footer id="rodape">
-	&copy; Burguerboss<em id="date"></em>. Todos os direitos reservados
-</footer>
+
 </body>
 @include('footer')
