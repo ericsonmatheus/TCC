@@ -121,4 +121,3 @@
 </section>
 
 </body>
-@include('footer')

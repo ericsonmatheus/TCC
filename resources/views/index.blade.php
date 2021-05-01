@@ -54,15 +54,5 @@
 	</div>
 </section>
 
-<a href="/public/archives/carrinho.html" class="cart">
-		<div class="cart-info">
-			<div><i class="fas fa-shopping-basket"></i></div>
-			<div>
-			<p>Meu carrinho</p>
-			</div>
-			<div class="price">19,99</div>
-		</div>
-</a>
-
 </body>
 @include('footer')

@@ -166,7 +166,6 @@ tbody{
 
 
 
-
 @media screen and (min-width: 500px) {
 	.tudo {
 	  font-size: calc(16px + (8/1200) * 100 * 1vw);

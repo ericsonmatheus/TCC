@@ -11,5 +11,3 @@
 </section>
 
 </body>
-
-@include('footer')
