@@ -1,5 +1,5 @@
 <footer>
-        <a href="/public/archives/carrinho.html" class="cart">
+        <a href="{{ route('adm.carrinho') }}" class="cart">
             <div class="cart-info">
                 <div><i class="fas fa-shopping-basket"></i></div>
                 <div><p>Meu carrinho</p></div>

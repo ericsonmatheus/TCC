@@ -11,3 +11,4 @@
 </section>
 
 </body>
+@include('footer')

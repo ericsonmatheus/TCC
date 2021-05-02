@@ -24,5 +24,6 @@ Route::post('/cardapio/upload', [LunchController::class, 'createLunch'])->name('
 Route::get('/login', [AdmController::class, 'login'])->name('adm.login');
 Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');
 Route::get('/contato', [AdmController::class, 'contact'])->name('adm.contato');
+Route::get('/carrinho', [AdmController::class, 'car'])->name('adm.carrinho');
 Route::get('/', [AdmController::class, 'index'])->name('adm.index');
 

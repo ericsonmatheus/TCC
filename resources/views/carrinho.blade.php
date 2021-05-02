@@ -1,7 +1,7 @@
 @include('header')
 <section>
     <div class="container">
-        <a href="/public/archives/index.html"><i class="fas fa-arrow-left"></i></a>
+        <a href="{{ route('adm.index') }}"><i class="fas fa-arrow-left"></i></a>
         <table class="table">
             <tbody>
                 <td>
@@ -121,3 +121,4 @@
 </section>
 
 </body>
+@include('footer')

@@ -39,6 +39,9 @@ class AdmController extends Controller
         return view('contato');
     }
 
+    public function car() {
+        return view('carrinho');
+    }
 
     // Pegar todas categorias existentes no banco de dados
     public function getCategories() {
