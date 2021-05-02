@@ -43,11 +43,19 @@ class AdmController extends Controller
         return view('carrinho');
     }
 
+    public function location() {
+
+        return view('localizacao');
+
+    }
+
     // Pegar todas categorias existentes no banco de dados
     public function getCategories() {
         $result = Categoria::all();
 
         return $result;
     }
+
+
 
 }

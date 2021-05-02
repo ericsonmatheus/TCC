@@ -36,7 +36,7 @@
                 
 
             </form>
-            <a href="/public/archives/index.html" type="button" style="background: orange; margin: 30px 0 30px 0px;"
+            <a href="#" type="button" style="background: orange; margin: 30px 0 30px 0px;"
             class="button-large btn  btn-lg btn-block">Continuar</a>
         </div>
     </div>

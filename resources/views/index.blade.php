@@ -6,7 +6,7 @@
 
 		<form>
 
-			<a href="#" type="button" class="button-large btn  btn-lg btn-block"><i class="fas fa-location-arrow"></i>
+			<a href="{{ route('adm.localizacao') }}" type="button" class="button-large btn  btn-lg btn-block"><i class="fas fa-location-arrow"></i>
 				Selecione seu
 				endereço</a>
 
