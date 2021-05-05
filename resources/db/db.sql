@@ -14,83 +14,90 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema burguerboss
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `burguerboss` DEFAULT CHARACTER SET utf8 ;
-USE `burguerboss` ;
-
-CREATE TABLE IF NOT EXISTS `burguerboss`.`categorias` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `tipo` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+CREATE SCHEMA IF NOT EXISTS burguerboss DEFAULT CHARACTER SET utf8 ;
+USE burguerboss ;
 
 -- -----------------------------------------------------
--- Table `burguerboss`.`lanches`
+-- Table categorias
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `burguerboss`.`lanches` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NOT NULL,
-  `pathLanche` VARCHAR(255) NOT NULL,
-  `valor` DOUBLE NOT NULL,
-  `created_at` TIMESTAMP NULL,
-  `updated_at` TIMESTAMP NULL,
-  `idcategoria` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`idcategoria`)
-    REFERENCES `burguerboss`.`categorias` (`id`))
+CREATE TABLE IF NOT EXISTS categorias (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  tipo VARCHAR(45) NOT NULL,
+  updated_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  PRIMARY KEY (id))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `burguerboss`.`funcionarios`
+-- Table lanches
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `burguerboss`.`funcionarios` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(100) NOT NULL,
-  `login` VARCHAR(45) NOT NULL UNIQUE,
-  `senha` VARCHAR(256) NOT NULL,
-  `created_at` TIMESTAMP NULL,
-  `updated_at` TIMESTAMP NULL,
-  PRIMARY KEY (`id`))
+CREATE TABLE IF NOT EXISTS lanches (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  descricao VARCHAR(45) NOT NULL,
+  imgcomida BINARY NOT NULL,
+  valor DOUBLE NOT NULL,
+  updated_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  idcategoria INT NOT NULL,
+  PRIMARY KEY (id),
+    FOREIGN KEY (idcategoria)
+    REFERENCES categorias (id))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `burguerboss`.`comandas`
+-- Table funcionarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `burguerboss`.`comandas` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `valorTotal` DOUBLE NOT NULL,
-  `created_at` TIMESTAMP NULL,
-  `updated_at` TIMESTAMP NULL,
-  PRIMARY KEY (`id`))
+CREATE TABLE IF NOT EXISTS funcionarios (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  login VARCHAR(45) NOT NULL DEFAULT 'UNIQUE',
+  senha VARCHAR(256) NOT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  PRIMARY KEY (id))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `burguerboss`.`carrinhos`
+-- Table carrinhos
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `burguerboss`.`carrinhos` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `idlanche` INT NOT NULL,
-  `idcomanda` INT NOT NULL,
-  `created_at` TIMESTAMP NULL,
-  `updated_at` TIMESTAMP NULL,
-  PRIMARY KEY (`id`),
-    FOREIGN KEY (`idlanche`)
-    REFERENCES `burguerboss`.`lanches` (`id`),
-    FOREIGN KEY (`idcomanda`)
-    REFERENCES `burguerboss`.`comandas` (`id`)
-);
+CREATE TABLE IF NOT EXISTS carrinhos (
+  id INT NOT NULL AUTO_INCREMENT,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  PRIMARY KEY (id))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table comandas
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS comandas (
+  id INT NOT NULL AUTO_INCREMENT,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  idlanche INT NOT NULL,
+  idcarrinho INT NOT NULL,
+  PRIMARY KEY (id),
+    FOREIGN KEY (idlanche)
+    REFERENCES lanches (id),
+    FOREIGN KEY (idcarrinho)
+    REFERENCES carrinhos (id))
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 insert into categorias (nome, tipo) values('Hamburguer','comida');
 insert into categorias (nome, tipo) values('Refrigerante','bebida');
 insert into categorias (nome, tipo) values('Batata','comida');
 insert into categorias (nome, tipo) values('Combo','comida');
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 

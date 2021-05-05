@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/carteira', [AdmController::class, 'wallet'])->name('adm.carteira');
 
 Route::get('/cardapio', [AdmController::class, 'menu'])->name('adm.cardapio');
-Route::post('/cardapio/upload', [LunchController::class, 'createLunch'])->name('adm.criarLanche');
+Route::post('/cardapio/store', [LunchController::class, 'createLunch'])->name('adm.criarLanche');
 
 Route::get('/login', [AdmController::class, 'login'])->name('adm.login');
 Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');

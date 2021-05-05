@@ -4,8 +4,6 @@
         <div id="showEndereco">
             <form>
 
-
-
                 <div class="form-group">
                     <label>Cep:
                         <input class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9"

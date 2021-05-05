@@ -20,7 +20,6 @@ class LunchController extends Controller
         $lanche->idcategoria = $category->id;
 
         $lanche->save();
-
         return redirect(route('adm.cardapio'));
     }
 
