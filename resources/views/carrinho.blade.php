@@ -47,7 +47,7 @@
                         <h2>Total</h2>
                     </td>
                     <td>
-                        <p style="font-weight: bold;">R$ 21,97</p>
+                        <p class="dinheiro" style="font-weight: bold;"></p>
                     </td>
                 </tr>
             </tbody>

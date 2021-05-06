@@ -53,6 +53,15 @@
 		</table>
 	</div>
 </section>
+<footer>
+        <a href="{{ route('adm.carrinho') }}" class="cart">
+            <div class="cart-info">
+                <div><i class="fas fa-shopping-basket"></i></div>
+                <div><p>Meu carrinho</p></div>
+                <div class="price">19,99</div>
+            </div>
+        </a>
+</footer>
 
 </body>
 @include('footer')
