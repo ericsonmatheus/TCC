@@ -2,13 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrinho;
 use App\Models\Categoria;
-use App\Models\Lanche;
 
 class AdmController extends Controller
 {
+    
+    const SESSION_USER = 'sessionUser';
+    const SESSION_FUNC = 'sessionFunc';
+
+    //Iniciar sessão para usuário externo
+    private function sessionUser(){
+        $cart = new Carrinho();
+
+        $cart->save();
+
+        session()->put(AdmController::SESSION_USER, $cart);
+    }
+
+
     public function index($lunchs = null) {
 
+        $this->verifySessionUser();
+        print_r(session()->all()); exit;
         $lunchs = LunchController::getAllLunch();
 
         return view('index', [

@@ -59,23 +59,17 @@ table {
 .navbar{
 	padding: 0 15px;
 }
-.navbar a{
-	text-decoration: none;
-}
 header{
 	background: orange;	
 	
 }
 
+
+
 section{
 	padding-top: 20px;
 }
 
-footer{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
 
 #menu{
 	background: orange;
@@ -276,9 +270,15 @@ input:-webkit-autofill{
 	z-index: -1;
 }
 
+<<<<<<< HEAD
 .third-content .first-column{
 	z-index: -1;
 }
+=======
+
+
+
+>>>>>>> d20b8a0fdf4b1eea4b9e69e5c9b56767d55baa91
 
 .third-content .second-column{
 	z-index: -11;

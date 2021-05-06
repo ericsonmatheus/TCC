@@ -1,23 +1,15 @@
-
 var abrir = document.getElementById('abrirMenu')
 var fechar = document.getElementById('fecharMenu')
-
-
-
-
 abrir.addEventListener('click', function(){
     var menu = document.getElementById('menu')
     menu.style.width = '250px'
 })
-
-
 fechar.addEventListener('click', function(){
     var menu = document.getElementById('menu')
 
     menu.style.width = '0'
     menu.style.transition = 'width 0.2s ease'
 })
-
 var show = document.getElementById('show')
 var close = document.getElementById('close')
 
@@ -78,8 +70,8 @@ optDinheiro.addEventListener('click', function(){
 })
 
 
-function limpa_formulário_cep() {
-    //Limpa valores do formulário de cep.
+function limpa_formulario_cep() {
+    //Limpa valores do formulario de cep.
     document.getElementById('rua').value=("");
     document.getElementById('bairro').value=("");
     document.getElementById('cidade').value=("");
@@ -95,15 +87,15 @@ if (!("erro" in conteudo)) {
     
 } //end if.
 else {
-    //CEP não Encontrado.
-    limpa_formulário_cep();
-    alert("CEP não encontrado.");
+    //CEP nao Encontrado.
+    limpa_formulario_cep();
+    alert("CEP nao encontrado.");
 }
 }
 
 function pesquisacep(valor) {
 
-//Nova variável "cep" somente com dígitos.
+//Nova variavel "cep" somente com dígitos.
 var cep = valor.replace(/\D/g, '');
 
 //Verifica se campo cep possui valor informado.
@@ -132,14 +124,14 @@ if (cep != "") {
 
     } //end if.
     else {
-        //cep é inválido.
-        limpa_formulário_cep();
-        alert("Formato de CEP inválido.");
+        //cep e invalido.
+        limpa_formulario_cep();
+        alert("Formato de CEP invalido.");
     }
 } //end if.
 else {
-    //cep sem valor, limpa formulário.
-    limpa_formulário_cep();
+    //cep sem valor, limpa formulario.
+    limpa_formulario_cep();
 }
 };
 
@@ -167,12 +159,11 @@ function mostrar(e) {
     if (e.classList.contains("")) { //se tem olho aberto
       e.classList.remove("fas fa-door-open"); //remove classe olho aberto
       e.classList.add("fas fa-door-closed"); //coloca classe olho fechado
-    } else { //senão
+    } else { //senao
       e.classList.remove("fas fa-door-closed"); //remove classe olho fechado
       e.classList.add("fas fa-door-open"); //coloca classe olho aberto
     }
-
-  }
+}
 
   
 
