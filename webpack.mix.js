@@ -21,7 +21,10 @@ mix.styles(['resources/css/1_settings/1_settings.css',
             'resources/css/7_trumps/7_trumps.css'
         ], 'public/css/style.css')
     
-    /*.js(['resources/js/index.js'
-        ], 'public/js/script.js')*/
-        
+    .js(['resources/js/index.js'
+        ], 'public/js/script.js')
+
+    .js(['resources/js/login.js'
+        ], 'public/js/login.js')  
+          
     .version();

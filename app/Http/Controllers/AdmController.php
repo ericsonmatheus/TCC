@@ -7,37 +7,49 @@ use App\Models\Categoria;
 
 class AdmController extends Controller
 {
-    
-    const SESSION_USER = 'sessionUser';
-    const SESSION_FUNC = 'sessionFunc';
 
-    //Iniciar sessão para usuário externo
-    private function sessionUser(){
-        $cart = new Carrinho();
-
-        $cart->save();
-
-        session()->put(AdmController::SESSION_USER, $cart);
+    private function checkSessionUser() {
+        return session()->has('sessionUser');
     }
-
 
     public function index($lunchs = null) {
 
-        $this->verifySessionUser();
-        print_r(session()->all()); exit;
+        if(!$this->checkSessionUser()) {
+            $cart = new Carrinho();
+
+            $cart->save();
+
+            session()->put('sessionUser', $cart);
+        }
+
         $lunchs = LunchController::getAllLunch();
 
         return view('index', [
             'lunchs' => $lunchs
         ]);
     }
+
     //Chamar tela carteira
     public function wallet() {
+        if(!$this->checkSessionUser()) {
+            $cart = new Carrinho();
+
+            $cart->save();
+
+            session()->put('sessionUser', $cart);
+        }
+        
         return view('carteira');
     }
     //chamar tela cardapio
     public function menu() {
+        if(!$this->checkSessionUser()) {
+            $cart = new Carrinho();
 
+            $cart->save();
+
+            session()->put('sessionUser', $cart);
+        }
         $category = $this->getCategories();
         $lunchs = LunchController::getAllLunch();
 
@@ -55,14 +67,24 @@ class AdmController extends Controller
         return view('contato');
     }
 
-    public function car() {
+    public function cart() {
         return view('carrinho');
     }
 
     public function location() {
+        if(!$this->checkSessionUser()) {
+            $cart = new Carrinho();
 
+            $cart->save();
+
+            session()->put('sessionUser', $cart);
+        }
         return view('localizacao');
 
+    }
+
+    public function login() {
+        return view('login');
     }
 
     // Pegar todas categorias existentes no banco de dados

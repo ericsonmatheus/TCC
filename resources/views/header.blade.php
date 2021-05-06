@@ -22,7 +22,7 @@
         <nav class="navbar">
             <a class="form-inline" id="abrirMenu"><i class="fas fa-bars"></i></a>
             <img src="{{ asset('img/logo.png') }}" width="150px" height="150px" alt="">
-            <a class="fas fa-door-open" onclick="mostrar(this)"> ABERTO
+            <a href="{{ route('adm.login') }}" class="fas fa-door-open" onclick="mostrar(this)"> ABERTO
             </a>
         </nav>
     </header>
