@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS funcionarios (
   PRIMARY KEY (id))
 ENGINE = InnoDB;
 
+insert into funcionarios(nome, email, login, senha) values ('Administrador', 'adm@adm.com', 'admburguer', '$2y$10$xCn7AwpNIoYz10c.Xz4jluPzktf7AKLMhmwlaaGYPiMoL4KJJ5eXi');
 
 -- -----------------------------------------------------
 -- Table carrinhos

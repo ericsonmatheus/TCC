@@ -43,7 +43,7 @@
                     <div class="form-group col-md-12">
                         <label class="label-input" for="">
                             <i class="icon-modify far fa-envelope"></i>
-                            <input type="email" name="email" id="email" placeholder="E-mail">
+                            <input type="text" name="email" id="email" placeholder="E-mail">
                         </label>
                     </div>
                     <div class="form-group col-md-12">

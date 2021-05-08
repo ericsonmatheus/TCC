@@ -22,6 +22,7 @@ Route::get('/cardapio', [AdmController::class, 'menu'])->name('adm.cardapio');
 Route::post('/cardapio/store', [LunchController::class, 'createLunch'])->name('adm.criarLanche');
 
 Route::get('/login', [AdmController::class, 'login'])->name('adm.login');
+Route::post('/login/exec', [AdmController::class, 'loginPost'])->name('adm.login');
 Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');
 Route::get('/contato', [AdmController::class, 'contact'])->name('adm.contato');
 Route::get('/carrinho', [AdmController::class, 'cart'])->name('adm.carrinho');
