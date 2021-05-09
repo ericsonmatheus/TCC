@@ -30,7 +30,8 @@
                     </ul>
                 </div><!--social-media-->
                 <p>ou</p>
-                <form action="" class="form">
+                <form action="{{ route('adm.loginPost') }}" class="form" method="post">
+                    @csrf
                    <!--<label class="label-input" for="">
                         <i class="icon-modify far fa-envelope"></i>
                         <input type="email" name="email" id="email" placeholder="E-mail">
@@ -53,7 +54,7 @@
                         </label>
 
                     </div>
-                    <button class="btn">Entrar</button>
+                    <button type="submit" class="btn">Entrar</button>
                 </form>
                 <p><a class="txt txt-primary" href="#">Esqueceu sua senha?</a></p>
             </div> <!--First colum-->

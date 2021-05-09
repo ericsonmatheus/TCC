@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carrinho;
 use App\Models\Categoria;
 use App\Models\Funcionario;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AdmController extends Controller
@@ -23,17 +23,23 @@ class AdmController extends Controller
     //Chamar tela principal
     public function index($lunchs = null) {
 
-        if(!$this->checkSessionUser()) {
-            $cart = new Carrinho();
+        session()->forget('sessionFunc');
 
-            $cart->save();
-            
-            //Criar sessão usuário externo e adicionar um carrinho 
-            session()->put('sessionUser', $cart);
+        if(!$this->checkSessionFunc()) {
+            if(!$this->checkSessionUser()) {
+                $cart = new Carrinho();
+    
+                $cart->save();
+                
+                //Criar sessão usuário externo e adicionar um carrinho 
+                session()->put('sessionUser', $cart);
+            }
+        } else {
+            session()->forget('sessionUser');
         }
-
+        
         $lunchs = LunchController::getAllLunch();
-
+    
         return view('index', [
             'lunchs' => $lunchs
         ]);
@@ -41,25 +47,36 @@ class AdmController extends Controller
 
     //Chamar tela carteira
     public function wallet() {
-        if(!$this->checkSessionUser()) {
-            $cart = new Carrinho();
-
-            $cart->save();
-
-            session()->put('sessionUser', $cart);
+        if(!$this->checkSessionFunc()) {
+            if(!$this->checkSessionUser()) {
+                $cart = new Carrinho();
+    
+                $cart->save();
+                
+                //Criar sessão usuário externo e adicionar um carrinho 
+                session()->put('sessionUser', $cart);
+            }
+        } else {
+            session()->forgot('sessionUser');
         }
         
         return view('carteira');
     }
     //chamar tela cardapio
     public function menu() {
-        if(!$this->checkSessionUser()) {
-            $cart = new Carrinho();
-
-            $cart->save();
-
-            session()->put('sessionUser', $cart);
+        if(!$this->checkSessionFunc()) {
+            if(!$this->checkSessionUser()) {
+                $cart = new Carrinho();
+    
+                $cart->save();
+                
+                //Criar sessão usuário externo e adicionar um carrinho 
+                session()->put('sessionUser', $cart);
+            }
+        } else {
+            session()->forgot('sessionUser');
         }
+
         $category = $this->getCategories();
         $lunchs = LunchController::getAllLunch();
 
@@ -82,18 +99,24 @@ class AdmController extends Controller
     }
 
     public function location() {
-        if(!$this->checkSessionUser()) {
-            $cart = new Carrinho();
-
-            $cart->save();
-
-            session()->put('sessionUser', $cart);
+        if(!$this->checkSessionFunc()) {
+            if(!$this->checkSessionUser()) {
+                $cart = new Carrinho();
+    
+                $cart->save();
+                
+                //Criar sessão usuário externo e adicionar um carrinho 
+                session()->put('sessionUser', $cart);
+            }
+        } else {
+            session()->forgot('sessionUser');
         }
         return view('localizacao');
 
     }
 
     public function login() {
+
         $erro = session('erro');
 
         $data = [];
@@ -103,12 +126,13 @@ class AdmController extends Controller
                 'erro' => $erro
             ];
         }
-        return view('login');
+        return view('login', $data);
     }
 
     public function loginPost(Request $request) {
 
         $adm = Funcionario::where('login', $request->email)->first();
+
 
         if(!$adm || Hash::check($request->password, $adm->password)) {
             session()->flash('erro', 'Usuário ou senha Incorreta!');
@@ -127,7 +151,5 @@ class AdmController extends Controller
 
         return $result;
     }
-
-
 
 }
