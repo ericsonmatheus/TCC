@@ -72,7 +72,7 @@ class AdmController extends Controller
                 session()->put('sessionUser', $cart->id);
             }
         } else {
-            session()->forgot('sessionUser');
+            session()->forget('sessionUser');
         }
 
         $category = $this->getCategories();
