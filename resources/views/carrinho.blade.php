@@ -8,13 +8,13 @@
                     <h2>Seus itens</h2>
                 </td>
                 <tr>
-                    <td width="80px" height="80px"><img src="IMG/Hamburguer.jfif" alt="Hamburguer"></td>
+                    <td width="80px" height="80px"><img src="{{ asset('img/hamburguer.png') }}" alt="Hamburguer"></td>
                     <td colspan="3">
                         <h2>X - Tudo</h2>
                         <p>Salada, alface, 2 carne de 250g</p>
                     </td>
                     <td>R$ 15,99</td>
-                    <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade"></td>
+                    <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
                 </tr>
             </tbody>
             

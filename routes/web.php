@@ -23,9 +23,11 @@ Route::post('/cardapio/store', [LunchController::class, 'createLunch'])->name('a
 
 Route::get('/login', [AdmController::class, 'login'])->name('adm.login');
 Route::post('/login/exec', [AdmController::class, 'loginPost'])->name('adm.loginPost');
+Route::get('/logout', [AdmController::class, 'logout'])->name('adm.logout');
 Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');
 Route::get('/contato', [AdmController::class, 'contact'])->name('adm.contato');
 Route::get('/carrinho', [AdmController::class, 'cart'])->name('adm.carrinho');
 Route::get('/localizacao', [AdmController::class, 'location'])->name('adm.localizacao');
+Route::post('/localizacao/addaddress', [AdmController::class, 'addAddress'])->name('adm.addEndereco');
 Route::get('/', [AdmController::class, 'index'])->name('adm.index');
 

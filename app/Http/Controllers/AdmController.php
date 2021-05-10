@@ -23,8 +23,6 @@ class AdmController extends Controller
     //Chamar tela principal
     public function index($lunchs = null) {
 
-        session()->forget('sessionFunc');
-
         if(!$this->checkSessionFunc()) {
             if(!$this->checkSessionUser()) {
                 $cart = new Carrinho();
@@ -32,7 +30,7 @@ class AdmController extends Controller
                 $cart->save();
                 
                 //Criar sessão usuário externo e adicionar um carrinho 
-                session()->put('sessionUser', $cart);
+                session()->put('sessionUser.cart.id', $cart->id);
             }
         } else {
             session()->forget('sessionUser');
@@ -54,7 +52,7 @@ class AdmController extends Controller
                 $cart->save();
                 
                 //Criar sessão usuário externo e adicionar um carrinho 
-                session()->put('sessionUser', $cart);
+                session()->put('sessionUser', $cart->id);
             }
         } else {
             session()->forgot('sessionUser');
@@ -71,7 +69,7 @@ class AdmController extends Controller
                 $cart->save();
                 
                 //Criar sessão usuário externo e adicionar um carrinho 
-                session()->put('sessionUser', $cart);
+                session()->put('sessionUser', $cart->id);
             }
         } else {
             session()->forgot('sessionUser');
@@ -106,7 +104,7 @@ class AdmController extends Controller
                 $cart->save();
                 
                 //Criar sessão usuário externo e adicionar um carrinho 
-                session()->put('sessionUser', $cart);
+                session()->put('sessionUser', $cart->id);
             }
         } else {
             session()->forgot('sessionUser');
@@ -143,6 +141,28 @@ class AdmController extends Controller
             return redirect()->route('adm.index');
         }
 
+    }
+
+    public function logout() {
+        session()->forget('sessionFunc');
+        return redirect()->route('adm.index');
+    }
+
+    //Adicionar endereco a sessão para quando foi concluido o pedido
+    public function addAddress(Request $request) {
+        
+        $endereco = [
+            'cep' => $request->cep,
+            'rua' => $request->rua,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairo' => $request->bairro,
+            'cidade' => $request->cidade
+        ];
+        
+        session()->push('sessionUser.cart.endereco', $endereco);
+
+        return redirect()->route('adm.index');
     }
 
     // Pegar todas categorias existentes no banco de dados
