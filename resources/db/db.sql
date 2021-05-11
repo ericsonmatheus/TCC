@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS lanches (
   id INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NOT NULL,
   descricao VARCHAR(45) NOT NULL,
-  imgcomida BINARY NOT NULL,
+  pathlanche VARCHAR(255),
   valor DOUBLE NOT NULL,
   updated_at TIMESTAMP NULL,
   created_at TIMESTAMP NULL,
