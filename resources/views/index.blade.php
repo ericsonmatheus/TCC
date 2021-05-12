@@ -1,14 +1,20 @@
 @include('header')
 <section>
 	<div class="container">
-		<p><i class="fas fa-map-marked-alt"></i> Q 106 - Recanto das Emas, Brasília - DF, 72601-202</p>
-		<p><i class="fas fa-map-marker-alt"></i> Seu local</p>
+
+		@if (isset($address))
+			<p><i class="fas fa-map-marked-alt"></i> {{`${$address[rua]} - ${$address->bairro}, ${$address->cidade}, ${$address->cep}`}}</p>
+			<p><i class="fas fa-map-marker-alt"></i> {{`${$address->complemento}, ${$address->numero}`}}</p>
+		@else
+			<p><i class="fas fa-map-marked-alt"></i> Sem Local</p>
+			<p><i class="fas fa-map-marker-alt"></i> Sem local</p>
+		@endif
+		
 
 		<form>
 
 			<a href="{{ route('adm.localizacao') }}" type="button" class="button-large btn  btn-lg btn-block"><i class="fas fa-location-arrow"></i>
-				Selecione seu
-				endereço</a>
+				Selecione seu endereço</a>
 
 			<ul class="nav justify-content-center">
 				<li class="nav-item">

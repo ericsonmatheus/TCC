@@ -23,6 +23,12 @@ class AdmController extends Controller
     //Chamar tela principal
     public function index($lunchs = null) {
 
+        //Sessão onde está o endereço
+        $address = session('sessionUser.cart.endereco'); 
+
+        //Encontrar o ultimo endereço adicionado
+        $lastAddress = $address[count($address) - 1];
+
         if(!$this->checkSessionFunc()) {
             if(!$this->checkSessionUser()) {
                 $cart = new Carrinho();
@@ -39,7 +45,8 @@ class AdmController extends Controller
         $lunchs = LunchController::getAllLunch();
     
         return view('index', [
-            'lunchs' => $lunchs
+            'lunchs' => $lunchs,
+            'address' => $lastAddress
         ]);
     }
 
