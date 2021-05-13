@@ -49,7 +49,22 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table funcionarios`
+-- Table enderecos
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS enderecos (
+  id INT NOT NULL AUTO_INCREMENT,
+  cep VARCHAR(9) NULL,
+  rua VARCHAR(45) NULL,
+  numero VARCHAR(45) NULL,
+  complemento VARCHAR(45) NULL,
+  bairro VARCHAR(45) NULL,
+  cidade VARCHAR(45) NULL,
+  PRIMARY KEY (id))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table funcionarios
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS funcionarios (
   id INT NOT NULL AUTO_INCREMENT,
@@ -59,10 +74,15 @@ CREATE TABLE IF NOT EXISTS funcionarios (
   senha VARCHAR(256) NOT NULL,
   created_at TIMESTAMP NULL,
   updated_at TIMESTAMP NULL,
-  PRIMARY KEY (id))
+  idendereco INT NULL,
+  PRIMARY KEY (id),
+    FOREIGN KEY (idendereco)
+    REFERENCES enderecos (id))
 ENGINE = InnoDB;
 
 insert into funcionarios(nome, email, login, senha) values ('Administrador', 'adm@adm.com', 'admburguer', '$2y$10$xCn7AwpNIoYz10c.Xz4jluPzktf7AKLMhmwlaaGYPiMoL4KJJ5eXi');
+
+
 
 -- -----------------------------------------------------
 -- Table carrinhos
@@ -71,8 +91,14 @@ CREATE TABLE IF NOT EXISTS carrinhos (
   id INT NOT NULL AUTO_INCREMENT,
   created_at TIMESTAMP NULL,
   updated_at TIMESTAMP NULL,
-  PRIMARY KEY (id))
+  idendereco INT NULL,
+  PRIMARY KEY (id),
+    FOREIGN KEY (idendereco)
+    REFERENCES enderecos (id))
 ENGINE = InnoDB;
+
+
+
 
 
 -- -----------------------------------------------------
@@ -101,4 +127,3 @@ insert into categorias (nome, tipo) values('Hamburguer','comida');
 insert into categorias (nome, tipo) values('Refrigerante','bebida');
 insert into categorias (nome, tipo) values('Batata','comida');
 insert into categorias (nome, tipo) values('Combo','comida');
-
