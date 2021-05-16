@@ -2,6 +2,7 @@
 <section>
 	<div class="container">
 
+		<!--
 		@if (isset($address))
 			<p><i class="fas fa-map-marked-alt"></i> {{`${$address[rua]} - ${$address->bairro}, ${$address->cidade}, ${$address->cep}`}}</p>
 			<p><i class="fas fa-map-marker-alt"></i> {{`${$address->complemento}, ${$address->numero}`}}</p>
@@ -10,7 +11,10 @@
 			<p><i class="fas fa-map-marker-alt"></i> Sem local</p>
 		@endif
 		
+		-->
 
+		<p><i class="fas fa-map-marked-alt"></i> Sem Local</p>
+		<p><i class="fas fa-map-marker-alt"></i> Sem local</p>
 		<form>
 
 			<a href="{{ route('adm.localizacao') }}" type="button" class="button-large btn  btn-lg btn-block"><i class="fas fa-location-arrow"></i>
