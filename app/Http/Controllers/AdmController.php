@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrinho;
 use App\Models\Categoria;
+use App\Models\Endereco;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,13 +21,15 @@ class AdmController extends Controller
         return session()->has('sessionFunc');
     }
 
-    //Chamar tela principal
-    public function index($lunchs = null) {
-
+    public function verifySession() {
+        //Checa se existe uma sessão de funcionário, se tiver não há a necessidade
+        //de existir uma sessão de usuário(cliente)
         if(!$this->checkSessionFunc()) {
+            //Se não existir sessão de funcionário, então e um cliente acessando
+            //Enão deverá criar um carrinho para este usuário 
             if(!$this->checkSessionUser()) {
                 $cart = new Carrinho();
-    
+                
                 $cart->save();
                 
                 //Criar sessão usuário externo e adicionar um carrinho 
@@ -35,45 +38,32 @@ class AdmController extends Controller
         } else {
             session()->forget('sessionUser');
         }
-        
+    }
+
+    //Chamar tela principal
+    public function index($lunchs = null) {
+
+        $this->verifySession();
+
+        $address = Endereco::where('id', session('sessionUser.cart.endereco.id'))->first();
+
         $lunchs = LunchController::getAllLunch();
     
         return view('index', [
-            'lunchs' => $lunchs
+            'lunchs' => $lunchs,
+            'address' => $address
         ]);
     }
 
     //Chamar tela carteira
     public function wallet() {
-        if(!$this->checkSessionFunc()) {
-            if(!$this->checkSessionUser()) {
-                $cart = new Carrinho();
-    
-                $cart->save();
-                
-                //Criar sessão usuário externo e adicionar um carrinho 
-                session()->put('sessionUser', $cart->id);
-            }
-        } else {
-            session()->forgot('sessionUser');
-        }
+        $this->verifySession();
         
         return view('carteira');
     }
     //chamar tela cardapio
     public function menu() {
-        if(!$this->checkSessionFunc()) {
-            if(!$this->checkSessionUser()) {
-                $cart = new Carrinho();
-    
-                $cart->save();
-                
-                //Criar sessão usuário externo e adicionar um carrinho 
-                session()->put('sessionUser', $cart->id);
-            }
-        } else {
-            session()->forget('sessionUser');
-        }
+        $this->verifySession();
 
         $category = $this->getCategories();
         $lunchs = LunchController::getAllLunch();
@@ -97,18 +87,8 @@ class AdmController extends Controller
     }
 
     public function location() {
-        if(!$this->checkSessionFunc()) {
-            if(!$this->checkSessionUser()) {
-                $cart = new Carrinho();
-    
-                $cart->save();
-                
-                //Criar sessão usuário externo e adicionar um carrinho 
-                session()->put('sessionUser', $cart->id);
-            }
-        } else {
-            session()->forgot('sessionUser');
-        }
+
+        $this->verifySession();
         return view('localizacao');
 
     }
@@ -145,23 +125,6 @@ class AdmController extends Controller
 
     public function logout() {
         session()->forget('sessionFunc');
-        return redirect()->route('adm.index');
-    }
-
-    //Adicionar endereco a sessão para quando foi concluido o pedido
-    public function addAddress(Request $request) {
-        
-        $endereco = [
-            'cep' => $request->cep,
-            'rua' => $request->rua,
-            'numero' => $request->numero,
-            'complemento' => $request->complemento,
-            'bairo' => $request->bairro,
-            'cidade' => $request->cidade
-        ];
-        
-        session()->push('sessionUser.cart.endereco', $endereco);
-
         return redirect()->route('adm.index');
     }
 

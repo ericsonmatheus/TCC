@@ -59,6 +59,8 @@ CREATE TABLE IF NOT EXISTS enderecos (
   complemento VARCHAR(45) NULL,
   bairro VARCHAR(45) NULL,
   cidade VARCHAR(45) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
   PRIMARY KEY (id))
 ENGINE = InnoDB;
 
@@ -96,9 +98,6 @@ CREATE TABLE IF NOT EXISTS carrinhos (
     FOREIGN KEY (idendereco)
     REFERENCES enderecos (id))
 ENGINE = InnoDB;
-
-
-
 
 
 -- -----------------------------------------------------

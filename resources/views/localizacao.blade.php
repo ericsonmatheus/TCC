@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label>Complemento:
                     <input class="form-control" name="complemento" type="text" id="numero" value="" size="45"
-                            maxlength="9" />
+                            maxlength="20" />
                     </label>
                 </div>
                 <div class="form-group">

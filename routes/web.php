@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AdmController;
 use App\Http\Controllers\LunchController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,6 @@ Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');
 Route::get('/contato', [AdmController::class, 'contact'])->name('adm.contato');
 Route::get('/carrinho', [AdmController::class, 'cart'])->name('adm.carrinho');
 Route::get('/localizacao', [AdmController::class, 'location'])->name('adm.localizacao');
-Route::post('/localizacao/addaddress', [AdmController::class, 'addAddress'])->name('adm.addEndereco');
+Route::post('/localizacao/addaddress', [AddressController::class, 'addAddress'])->name('adm.addEndereco');
 Route::get('/', [AdmController::class, 'index'])->name('adm.index');
 
