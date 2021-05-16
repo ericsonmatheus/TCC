@@ -114,7 +114,6 @@ tbody{
 	right: 0;
 	background: orange;
 	height: 100%;
-	width: 0px;
 	position: fixed;
 	top: 0;
 	overflow: hidden;
@@ -162,13 +161,19 @@ tbody{
 }
 
 
-
-
-
-
-@media screen and (min-width: 500px) {
-	.tudo {
-	  font-size: calc(16px + (8/1200) * 100 * 1vw);
-	  background: #ffe;
+@media (min-width: 640px) {
+	.adicionar{
+		
+			width: 100%;
+			padding: 25px;
+		
 	}
   }
+
+
+
+
+
+
+
+

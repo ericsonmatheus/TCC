@@ -15,7 +15,7 @@ var close = document.getElementById('close')
 
 show.addEventListener('click', function(){
     var adicionarCardapio = document.getElementById('adicionar')
-    adicionarCardapio.style.width = '50%'
+    adicionarCardapio.style.width = '100%'
     adicionarCardapio.style.padding = '25px'
 })
 

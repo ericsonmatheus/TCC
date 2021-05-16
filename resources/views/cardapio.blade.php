@@ -55,7 +55,7 @@
 								<P>Arraste uma imagem</P>
 								<p>-ou-</p>
 								</p>
-								<input type="file" name='imgComida' class="btn btn-primary">
+								<input type="file" name='imgComida' class="btn">
 							</div>
 						</div>
 					</div>

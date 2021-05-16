@@ -114,7 +114,6 @@ tbody{
 	right: 0;
 	background: orange;
 	height: 100%;
-	width: 0px;
 	position: fixed;
 	top: 0;
 	overflow: hidden;
@@ -241,4 +240,3 @@ footer{
 .card{
     color: #3b3b3b60;
 }
-
