@@ -7,6 +7,9 @@
                 <td>
                     <h2>Seus itens</h2>
                 </td>
+                @foreach ( as )
+                    
+                @endforeach
                 <tr>
                     <td ><img width="14vh" height="14vh" src="{{ asset('img/hamburguer.png') }}" alt="Hamburguer"></td>
                     <td colspan="3">
