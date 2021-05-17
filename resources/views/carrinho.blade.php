@@ -7,15 +7,18 @@
                 <td>
                     <h2>Seus itens</h2>
                 </td>
-                <tr>
-                    <td ><img width="60vh" height="60vh" src="{{ asset('img/hamburguer.png') }}" alt="Hamburguer"></td>
-                    <td colspan="3">
-                        <h2>X - Tudo</h2>
-                        <p>Salada, alface, 2 carne de 250g</p>
-                    </td>
-                    <td>R$ 15,99</td>
-                    <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
-                </tr>
+                @foreach ($pedidos as $pedido)
+                    <tr>
+                        <td ><img width="60vh" height="60vh" src="{{ env('APP_URL') }}/storage/{{ $pedido->pathlanche }}" alt="Hamburguer"></td>
+                        <td colspan="3">
+                            <h2>{{ $pedido->nome }}</h2>
+                            <p>{{ $pedido->descricao }}</p>
+                        </td>
+                        <td>{{ $pedido->valor }}</td>
+                        <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
+                    </tr> 
+                @endforeach    
+                   
             </tbody>
             
             <tbody>
