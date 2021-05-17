@@ -115,7 +115,7 @@ class AdmController extends Controller
                                 ->get();
 
         return view('carrinho', [
-            'requests' => $pedidos
+            'pedidos' => $pedidos
         ]);
     }
 
