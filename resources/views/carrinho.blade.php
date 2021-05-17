@@ -9,7 +9,7 @@
                 </td>
                 @foreach ($pedidos as $pedido)
                     <tr>
-                        <td ><img width="14vh" height="14vh" src="{{ env('APP_URL') }}/storage/{{ $pedido->pathlanche }}" alt="Hamburguer"></td>
+                        <td ><img width="60vh" height="60vh" src="{{ env('APP_URL') }}/storage/{{ $pedido->pathlanche }}" alt="Hamburguer"></td>
                         <td colspan="3">
                             <h2>{{ $pedido->nome }}</h2>
                             <p>{{ $pedido->descricao }}</p>
