@@ -28,6 +28,7 @@ Route::get('/logout', [AdmController::class, 'logout'])->name('adm.logout');
 Route::get('/sobre', [AdmController::class, 'about'])->name('adm.sobre');
 Route::get('/contato', [AdmController::class, 'contact'])->name('adm.contato');
 Route::get('/carrinho', [AdmController::class, 'cart'])->name('adm.carrinho');
+Route::get('/carrinho/{lanche}/novo', [AdmController::class, 'addLancheToCart'])->name('adm.addComanda');
 Route::get('/localizacao', [AdmController::class, 'location'])->name('adm.localizacao');
 Route::post('/localizacao/addaddress', [AddressController::class, 'addAddress'])->name('adm.addEndereco');
 Route::get('/', [AdmController::class, 'index'])->name('adm.index');

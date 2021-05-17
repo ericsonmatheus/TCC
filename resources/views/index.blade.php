@@ -50,7 +50,7 @@
 							<p>{{ $lunch->descricao }}</p>
 						</td>
 						<td>{{ $lunch->valor }}</td>
-						<td><a href="#"><button class="btn btn-primary"><i class="fas fa-plus-square"></i></button></a></td>
+						<td><a href="{{ route('adm.addComanda', $lunch->id) }}"><button class="btn btn-primary"><i class="fas fa-plus-square"></i></button></a></td>
 					</tr>
 				</tbody>
 			@endforeach

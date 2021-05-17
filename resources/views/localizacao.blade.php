@@ -6,11 +6,11 @@
                 @csrf
                 <div class="form-group">
                     <label>Cep:
-                    <input class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" /></label><br />
+                    <input class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" required /></label><br />
                 </div>
                 <div class="form-group">
                     <label>Rua:
-                    <input class="form-control" name="rua" type="text" id="rua" size="60" /></label><br />
+                    <input class="form-control" name="rua" type="text" id="rua" size="60" required /></label><br />
                 </div>
                 <div class="form-group">
                     <label>Numero:
@@ -25,12 +25,12 @@
                 </div>
                 <div class="form-group">
                     <label>Bairro:
-                    <input class="form-control" name="bairro" type="text" id="bairro" size="40" /></label><br />
+                    <input class="form-control" name="bairro" type="text" id="bairro" size="40" required/></label><br />
 
                 </div>
                 <div class="form-group">
                     <label>Cidade:
-                    <input class="form-control" name="cidade" type="text" id="cidade" size="40" /></label><br />
+                    <input class="form-control" name="cidade" type="text" id="cidade" size="40" required/></label><br />
                 </div>
                 <button type="submit" style="background: orange; margin: 30px 0 30px 0px;" class="button-large btn  btn-lg btn-block">Continuar</button>
             </form>

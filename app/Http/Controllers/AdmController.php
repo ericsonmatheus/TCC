@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrinho;
 use App\Models\Categoria;
+use App\Models\Comanda;
 use App\Models\Endereco;
 use App\Models\Funcionario;
+use App\Models\Lanche;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -73,6 +75,27 @@ class AdmController extends Controller
             'categories' => $category
         ]);
     }
+
+    //Função para adicionar um lanche ao carrinho
+    public function addLancheToCart(Lanche $lanche) {
+        $comanda = new Comanda();
+
+        $comanda->idlanche = $lanche->id;
+        $comanda->idcarrinho = session('sessionUser.cart.id');
+
+        $comanda->save();
+
+        return redirect()->route('adm.index');
+        
+    }
+
+    //Função para adicionar um lanche ao carrinho
+    public function removeLancheToCart(Lanche $lanche) {
+        
+        ////////////////////////////////////////
+
+    }
+
     //chamar tela sobre
     public function about() {
         return view('sobre');
@@ -83,7 +106,17 @@ class AdmController extends Controller
     }
 
     public function cart() {
-        return view('carrinho');
+
+        $pedidos = Comanda::query('comandas')
+                                ->join('carrinhos', 'carrinhos.id', '=', 'comandas.idcarrinho')
+                                ->join('lanches', 'lanches.id', '=', 'comandas.idlanche')
+                                ->where('carrinhos.id', '=', session('sessionUser.cart.id'))
+                                ->select('lanches.*', 'carrinhos.id')
+                                ->get();
+
+        return view('carrinho', [
+            'requests' => $pedidos
+        ]);
     }
 
     public function location() {
