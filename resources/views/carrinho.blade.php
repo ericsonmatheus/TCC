@@ -8,7 +8,7 @@
                     <h2>Seus itens</h2>
                 </td>
                 <tr>
-                    <td ><img width="14vh" height="14vh" src="{{ asset('img/hamburguer.png') }}" alt="Hamburguer"></td>
+                    <td ><img width="60vh" height="60vh" src="{{ asset('img/hamburguer.png') }}" alt="Hamburguer"></td>
                     <td colspan="3">
                         <h2>X - Tudo</h2>
                         <p>Salada, alface, 2 carne de 250g</p>
