@@ -92,7 +92,7 @@ class AdmController extends Controller
     //Função para adicionar um lanche ao carrinho
     public function removeLancheToCart(Lanche $lanche) {
         
-        session()->forget('sessionUser.cart.lanche');
+        ////////////////////////////////////////
 
     }
 
@@ -106,9 +106,17 @@ class AdmController extends Controller
     }
 
     public function cart() {
-        
 
-        return view('carrinho');
+        $pedidos = Comanda::query('comandas')
+                                ->join('carrinhos', 'carrinhos.id', '=', 'comandas.idcarrinho')
+                                ->join('lanches', 'lanches.id', '=', 'comandas.idlanche')
+                                ->where('carrinhos.id', '=', session('sessionUser.cart.id'))
+                                ->select('lanches.*', 'carrinhos.id')
+                                ->get();
+
+        return view('carrinho', [
+            'requests' => $pedidos
+        ]);
     }
 
     public function location() {
