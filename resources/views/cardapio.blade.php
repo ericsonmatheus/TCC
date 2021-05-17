@@ -77,7 +77,7 @@
 					</div>
 					<div class="form-group">
 						<label for="valor">Valor do prato</label>
-						<input class="form-control" type="real" name="valor" id="valor">
+						<input type="text" id="dinheiro" name="valor" class="dinheiro form-control" style="display:inline-block" />
 					</div>
 				</div>
 				<div id="complemento">
