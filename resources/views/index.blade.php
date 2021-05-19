@@ -43,8 +43,8 @@
 						<h2>{{ $lunch->idcategoria }}</h2>
 					</td>
 					<tr>
-						<td width="80px" height="80px" min-width="55px" min-height="55px"><img
-								src="{{ env('APP_URL') }}/storage/{{ $lunch->pathlanche }}" alt="Hamburguer"></td>
+						<td><img img width="60vh" height="60vh" 
+								src=" {{ env('APP_URL') }}/storage/{{ $lunch->pathlanche }}" alt="Hamburguer"></td>
 						<td colspan="3">
 							<h2>{{ $lunch->nome }}</h2>
 							<p>{{ $lunch->descricao }}</p>

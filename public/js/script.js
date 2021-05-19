@@ -176,6 +176,3 @@ function mostrar(e) {
       e.classList.add("fas fa-door-open"); //coloca classe olho aberto
     }
 }
-
-  
-

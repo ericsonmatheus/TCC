@@ -18,8 +18,8 @@ mix.styles(['resources/css/style.css'
 	.styles(['resources/css/login.css'
         ], 'public/css/login.css')
     
-    /*.js(['resources/js/index.js'
-        ], 'public/js/script.js')*/
+    .js(['resources/js/index.js'
+        ], 'public/js/script.js')
 
     .js(['resources/js/login.js'
         ], 'public/js/login.js')  
