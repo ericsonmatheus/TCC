@@ -14,7 +14,7 @@
                             <h2>{{ $pedido->nome }}</h2>
                             <p>{{ $pedido->descricao }}</p>
                         </td>
-                        <td>{{ $pedido->valor }}</td>
+                        <td><label id="preco">{{ $pedido->valor }}</label></td>
                         <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
                     </tr> 
                 @endforeach    

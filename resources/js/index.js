@@ -1,5 +1,17 @@
+document.querySelector('#quantidade').addEventListener("change", atualizarPreco)
+
+function atualizarPreco(){
+    const qtd = document.querySelector("#quantidade").value
+    const precoBase = document.querySelector("#preco").value
+
+    let preco = precoBase * qtd
+
+    document.querySelector("#preco").innerHTML = `R$ ${(preco.toFixed(2).replace('.', ','))}`
+}
+
 var abrir = document.getElementById('abrirMenu')
 var fechar = document.getElementById('fecharMenu')
+
 abrir.addEventListener('click', function(){
     var menu = document.getElementById('menu')
     menu.style.width = '250px'
