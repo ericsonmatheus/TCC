@@ -14,7 +14,7 @@
                             <h2>{{ $pedido->nome }}</h2>
                             <p>{{ $pedido->descricao }}</p>
                         </td>
-                        <td><label id="preco">{{ $pedido->valor }}</label></td>
+                        <td>R$ {{formatPrice($pedido->valor)}}</td>
                         <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
                     </tr> 
                 @endforeach    
@@ -26,8 +26,8 @@
                     <h2>Local de Entrega</h2>
                 </td>
                 <tr>
-                    <td colspan="5">Aqui fica o local de entrega</td>
-                    <td><a href="/public/archives/Localizacao.html"><i class="fas fa-edit"></i> Editar</a></td>
+                    <td colspan="5">{{ "$address->rua $address->complemento, $address->bairro" }}</td>
+                    <td><a href="{{ route('adm.localizacao')}}"><i class="fas fa-edit"></i> Editar</a></td>
                 </tr>
                 
             </tbody>

@@ -114,8 +114,12 @@ class AdmController extends Controller
                                 ->select('lanches.*', 'carrinhos.id')
                                 ->get();
 
+        
+        $address = Endereco::where('id', session('sessionUser.cart.endereco.id'))->first();
+        
         return view('carrinho', [
-            'pedidos' => $pedidos
+            'pedidos' => $pedidos,
+            'address' => $address
         ]);
     }
 
