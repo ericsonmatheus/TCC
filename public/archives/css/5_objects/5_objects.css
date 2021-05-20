@@ -3,6 +3,8 @@
 	box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.16);
 	border: 1 solid #aeae;
 	font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 footer{
     display: flex;

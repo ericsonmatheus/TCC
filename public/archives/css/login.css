@@ -66,10 +66,10 @@ table {
 	border-radius: 15px;
 	background: #fff;
 	height: 80%;
-	width: 90%;
+	width: 60%;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-areas: "first-column" "second-column";
+	/*grid-template-columns: 1fr 1fr;
+	grid-template-areas: "first-column" "second-column";*/
 	justify-content: space-between;
 	align-items: center;	
 	position: relative;
@@ -78,10 +78,10 @@ table {
 .content::before{
 	content: "";
 	position: absolute;
-	width: 60%;
+	width: 100%;
 	height: 100%;
 	background: orange;
-	border-radius: 15px 0 0 15px;
+	border-radius: 15px 15px 15px 15px;
 
 	left: 0;
 }
@@ -96,7 +96,7 @@ table {
 
 .first-column{
 	grid-area: first-column;
-	width: 60%;
+	width: 100%;
 	z-index: 10;
 	display: flex;
 	align-items: center;
