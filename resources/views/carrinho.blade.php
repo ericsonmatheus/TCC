@@ -72,23 +72,42 @@
                 </tr>
                 <div id="show-cartao">
                     <tr>
-                        <td colspan="6">
-                            <p style="font-weight: bold;">cartão</p>
-                        </td>
+                        
+                    <td colspan="6">
+                            <form action="">
+                                <p style="font-weight: bold;">cartão</p>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="form-label" for="nome-cartao">Nome no cartão</label>
+                                            <input class="form-control" type="text" name="nome-cartao" id="nome-cartao">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="form-label" for="numero-cartao">Numero do cartão</label>
+                                            <input class="form-control" type="text" name="numero-cartao" id="numero-cartao">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="form-label" for="data-expiracao">Vencimento</label>
+                                            <input class="form-control" type="month" name="data-expiracao" id="data-expiracao">
+                                        </div>
+                                        <div class="col">
+                                            <label class="form-label" for="cvv">CVV</label>
+                                            <input class="form-control" type="text" name="cvv" id="cvv">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                           </td>
                     </tr>
-
                     <tr>
-                        <td colspan="5">Você não possui cartão</td>
-                        <td><a href="/public/archives/carteira.html" class="btn btn-outline-success"><i
-                                    class="fas fa-plus-square"></i> Adicionar</a></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">Pagar com cartão na Entrega</td>
                         <td>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="entregaCartao" name="entregaCartao"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="entregaCartao"></label>
+                                <input type="radio" id="entregaCartao" name="entregaCartao"class="custom-control-input">
+                                <label class="custom-control-label" for="entregaCartao"> Pagar com cartão na entrega?</label>
                             </div>
                         </td>
                     </tr>
