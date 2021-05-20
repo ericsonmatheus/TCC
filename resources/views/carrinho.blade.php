@@ -7,17 +7,30 @@
                 <td>
                     <h2>Seus itens</h2>
                 </td>
-                @foreach ($pedidos as $pedido)
+                @if (isset($pedidos))
+                    @foreach ($pedidos as $pedido)
+                        <tr>
+                            <td ><img width="60vh" height="60vh" src="{{ env('APP_URL') }}/storage/{{ $pedido->pathlanche }}" alt="Hamburguer"></td>
+                            <td colspan="3">
+                                <h2>{{ $pedido->nome }}</h2>
+                                <p>{{ $pedido->descricao }}</p>
+                            </td>
+                            <td>R$ {{formatPrice($pedido->valor)}}</td>
+                            <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
+                        </tr> 
+                    @endforeach  
+                @else
                     <tr>
-                        <td ><img width="60vh" height="60vh" src="{{ env('APP_URL') }}/storage/{{ $pedido->pathlanche }}" alt="Hamburguer"></td>
+                        <td ><img width="60vh" height="60vh" src="#" alt="Lanche"></td>
                         <td colspan="3">
-                            <h2>{{ $pedido->nome }}</h2>
-                            <p>{{ $pedido->descricao }}</p>
+                            <h2>Sem Pedido</h2>
+                            <p>Sem Pedido</p>
                         </td>
-                        <td>R$ {{formatPrice($pedido->valor)}}</td>
+                        <td>R$ Sem Valor</td>
                         <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
                     </tr> 
-                @endforeach    
+                @endif
+                  
                    
             </tbody>
             
@@ -25,10 +38,18 @@
                 <td colspan="6">
                     <h2>Local de Entrega</h2>
                 </td>
-                <tr>
-                    <td colspan="5">{{ "$address->rua $address->complemento, $address->bairro" }}</td>
-                    <td><a href="{{ route('adm.localizacao')}}"><i class="fas fa-edit"></i> Editar</a></td>
-                </tr>
+                @if (isset($address))
+                    <tr>
+                        <td colspan="5">{{ "$address->rua $address->complemento, $address->bairro" }}</td>
+                        <td><a href="{{ route('adm.localizacao')}}"><i class="fas fa-edit"></i> Editar</a></td>
+                    </tr>
+                @else
+                    <tr>
+                        <td colspan="5">Sem endereço cadastrado</td>
+                        <td><a href="{{ route('adm.localizacao')}}"><i class="fas fa-edit"></i> Adicionar Endereço</a></td>
+                    </tr>
+                @endif
+                
                 
             </tbody>
 
