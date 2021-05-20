@@ -2,7 +2,7 @@ document.querySelector('#quantidade').addEventListener("change", atualizarPreco)
 
 function atualizarPreco(){
     const qtd = document.querySelector("#quantidade").value
-    const precoBase = document.querySelector("#preco").value
+    const precoBase = parseFloat(document.querySelector("#preco").innerHTML)
 
     let preco = precoBase * qtd
 
