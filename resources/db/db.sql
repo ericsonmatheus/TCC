@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS lanches (
   id INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(45) NOT NULL,
+  nomeLanche VARCHAR(45) NOT NULL,
   descricao VARCHAR(45) NOT NULL,
   pathlanche VARCHAR(255),
   valor DOUBLE NOT NULL,

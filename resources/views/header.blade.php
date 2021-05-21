@@ -36,4 +36,4 @@
     @else
         @include('viewSelect.naoLogado')
     @endif
-    
+    @include('specific.functions')

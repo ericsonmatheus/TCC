@@ -130,6 +130,19 @@ class AdmController extends Controller
 
     }
 
+    public function setting() {
+
+        $this->verifySession();
+        return view('configuracao');
+
+    }
+
+    public function employee() {
+
+        $this->verifySession();
+        return view('funcionario');
+    }
+
     public function login() {
 
         $erro = session('erro');
@@ -155,7 +168,7 @@ class AdmController extends Controller
         } else {
             session()->put('sessionFunc', $adm);
             
-            return redirect()->route('adm.index');
+            return redirect()->route('adm.cardapio');
         }
 
     }
