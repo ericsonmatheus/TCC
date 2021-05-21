@@ -1,4 +1,4 @@
-document.querySelector('#quantidade').addEventListener("change", atualizarPreco)
+/*document.querySelector('#quantidade').addEventListener("change", atualizarPreco)
 
 function atualizarPreco(){
     const qtd = document.querySelector("#quantidade").value
@@ -7,7 +7,7 @@ function atualizarPreco(){
     let preco = precoBase * qtd
 
     document.querySelector("#preco").innerHTML = `R$ ${(preco.toFixed(2).replace('.', ','))}`
-}
+}*/
 
 var abrir = document.getElementById('abrirMenu')
 var fechar = document.getElementById('fecharMenu')
