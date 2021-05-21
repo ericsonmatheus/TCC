@@ -37,4 +37,3 @@
         @include('viewSelect.naoLogado')
     @endif
     
-@include('function.functions')
