@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class LunchController extends Controller
 {
     public function createLunch(Request $request) {
+        for($i=0; $i<20;$i++) {
         $lanche = new Lanche();
 
         $category = Categoria::where('nome', $request->categoria)->first();
@@ -19,7 +20,7 @@ class LunchController extends Controller
         $lanche->valor = $request->valor;
         $lanche->idcategoria = $category->id;
 
-        $lanche->save();
+        $lanche->save();}
         return redirect(route('adm.cardapio'));
     }
 
