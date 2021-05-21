@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 class LunchController extends Controller
 {
     public function createLunch(Request $request) {
-        for($i=0; $i<20;$i++) {
+        for($i=0; $i<5;$i++) {
         $lanche = new Lanche();
 
         $category = Categoria::where('nome', $request->categoria)->first();
 
-        $lanche->nome = $request->nome;
+        $lanche->nomeLanche = $request->nome;
         $lanche->descricao = $request->descricao;
         $lanche->pathLanche = $request->file('imgComida')->store('lanches');
         $lanche->valor = $request->valor;
@@ -25,8 +25,11 @@ class LunchController extends Controller
     }
 
     public static function getAllLunch() {
-        $result = Lanche::all();
+        $lanches = Lanche::query('lanches')
+                                ->join('categorias', 'categorias.id', '=', 'lanches.idcategoria')
+                                ->select('lanches.*', 'categorias.*')
+                                ->get();
 
-        return $result;
+        return $lanches;
     }
 }

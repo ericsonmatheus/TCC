@@ -34,4 +34,5 @@
 
     </div>
      </section>
+    </body>
      @include('footer')
