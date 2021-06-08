@@ -45,13 +45,13 @@
                     <div class="form-group col-md-12">
                         <label class="label-input" for="">
                             <i class="icon-modify far fa-envelope"></i>
-                            <input type="text" name="email" id="email" placeholder="E-mail">
+                            <input type="text" name="login" id="email" placeholder="E-mail" required>
                         </label>
                     </div>
                     <div class="form-group col-md-12">
                         <label class="label-input" for="">
                             <i class="icon-modify fas fa-lock"></i>
-                            <input type="password" name="senha" id="senha" placeholder="Senha">
+                            <input type="password" name="password" id="senha" placeholder="Senha" required>
                         </label>
 
                     </div>

@@ -1,15 +1,16 @@
 @include('header')
 <section>
     <div class="container">
-       <h2>Adicionar um novo usuario</h2>
+       <h2>Adicionar um novo usuário</h2>
 
-       <form action="" method="POST" class="form">
+       <form action="{{ route('adm.addFuncionario')}}" method="POST" class="form">
+        @csrf
            <div class="row">
                <div class="col">
-                   <input class="form-control" type="nome" id="nome" placeholder="nome">
+                   <input class="form-control" type="nome" name="nome" id="nome" placeholder="Nome">
                </div>
                <div class="col">
-                   <input class="form-control" type="Sobrenome" id="sobrenome" placeholder="Sobrenome"> 
+                   <input class="form-control" type="sobrenome" name="sobrenome" id="sobrenome" placeholder="Sobrenome"> 
 
                </div>
 
@@ -27,7 +28,7 @@
 
            </div>
            
-           <a href="configuracao.html" type="button" class="button-large btn  btn-lg btn-block btn-success">Continuar</a>
+           <button type="submit" style="margin-top: 1rem" class="button-large btn  btn-lg btn-block btn-success">Continuar</button>
 
       </form>
 

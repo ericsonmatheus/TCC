@@ -57,7 +57,7 @@
                 <tr>
                     <td colspan="5">Subtotal</td>
                     <td>
-                        <p>R$ 15,99</p>
+                        <p>{{formatPrice($valor)}}</p>
                     </td>
                 </tr>
                 <tr>
@@ -71,7 +71,7 @@
                         <h2>Total</h2>
                     </td>
                     <td>
-                        <p class="dinheiro" style="font-weight: bold;"></p>
+                        <p class="dinheiro" style="font-weight: bold;">{{formatPrice($valor += 4.99)}}</p>
                     </td>
                 </tr>
             </tbody>
@@ -82,20 +82,19 @@
                 <tr>
                     <td>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="optCartao" name="optCartao" class="custom-control-input">
+                            <input type="radio" id="optCartao" name="option" class="custom-control-input">
                             <label class="custom-control-label" for="optCartao">Cartão</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="optDinheiro" name="optDinheiro" class="custom-control-input">
+                            <input type="radio" id="optDinheiro" name="option" class="custom-control-input">
                             <label class="custom-control-label" for="optDinheiro">Dinheiro</label>
                         </div>
                     </td>
                 </tr>
                 <div id="show-cartao">
                     <tr>
-                        
-                    <td colspan="6">
-                            <form action="">
+                        <td colspan="6">
+                            <form action="" id="cartao">
                                 <p style="font-weight: bold;">cartão</p>
                                 <div class="form-group">
                                     <div class="row">
@@ -122,34 +121,43 @@
                                     </div>
                                 </div>
                             </form>
-                           </td>
+                        </td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="entregaCartao" name="entregaCartao"class="custom-control-input">
-                                <label class="custom-control-label" for="entregaCartao"> Pagar com cartão na entrega?</label>
-                            </div>
+                        <td colspan="6">
+                            <form action="" id="cartao">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="entregaCartao" name="entregaCartao"class="custom-control-input">
+                                    <label class="custom-control-label" for="entregaCartao"> Pagar com cartão na entrega?</label>
+                                </div>
+                            </form>
                         </td>
                     </tr>
                 </div>
-                
 
                 <div id="show-dinheiro">
                     <tr>
                         <td colspan="6">
-                            <p style="font-weight: bold;">Dinheiro</p>
+                            <form action="" id="dinheiro">
+                                <p style="font-weight: bold;">Dinheiro</p>
+                            </form>
                         </td>
                     </tr>
                     
                     <tr>
                         <td colspan="5">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="troco" name="troco" class="custom-control-input">
-                                <label class="custom-control-label" for="troco"> Vai precisar de troco?</label>
-                            </div>
+                            <form action="" id="dinheiro">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="troco" name="troco" class="custom-control-input">
+                                    <label class="custom-control-label" for="troco"> Vai precisar de troco?</label>
+                                </div>
+                            </form>
                         </td>
-                        <td><input class="form-control" type="text" readonly></td>
+                        <td>
+                            <form action="" id="dinheiro">
+                                <input class="form-control" type="text" placeholder="Troco para quanto?">
+                            </form>
+                        </td>
 
                     </tr>
                 </div>

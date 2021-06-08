@@ -2,11 +2,10 @@
 <section>
 	<div class="container">
 
+		<p><i class="fas fa-map-marked-alt"></i> Quadra 106 - Recanto das Emas - 72601-213</p>
 		@if (isset($address))
-			<p><i class="fas fa-map-marked-alt"></i> {{ "$address->rua - $address->bairro, $address->cidade, $address->cep" }}</p>
-			<p><i class="fas fa-map-marker-alt"></i> {{ "$address->complemento, $address->numero" }}</p>
+			<p><i class="fas fa-map-marker-alt"></i> {{ "$address->rua - $address->complemento, $address->numero- $address->bairro, $address->cidade, $address->cep" }}</p>
 		@else
-			<p><i class="fas fa-map-marked-alt"></i> Sem Local</p>
 			<p><i class="fas fa-map-marker-alt"></i> Sem local</p>
 		@endif 
 		
@@ -49,8 +48,8 @@
 							<h2>{{ $lunch->nomeLanche }}</h2>
 							<p>{{ $lunch->descricao }}</p>
 						</td>
-						<td>{{ $lunch->valor }}</td>
-						<td><a href="{{ route('adm.addComanda', $lunch->id) }}"><button class="btn btn-primary"><i class="fas fa-plus-square"></i></button></a></td>
+						<td id="valorLanche">{{ formatPrice($lunch->valor) }}</td>
+						<td id="store"><a href="{{ route('adm.addComanda', $lunch->id) }}"><button class="btn btn-primary"><i class="fas fa-plus-square"></i></button></a></td>
 					</tr>
 				</tbody>
 			@endforeach
@@ -63,7 +62,7 @@
             <div class="cart-info">
                 <div><i class="fas fa-shopping-basket"></i></div>
                 <div><p>Meu carrinho</p></div>
-                <div class="price">19,99</div>
+                <div class="price" id="valorCarrinho">{{ formatPrice($total)}}</div>
             </div>
         </a>
 </footer>

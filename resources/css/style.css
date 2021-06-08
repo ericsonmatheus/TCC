@@ -226,6 +226,17 @@ footer{
 	display: block;
 }
 
+#cartao{
+	opacity: 0;
+	transition: opacity 1.0s;
+	position: absolute;
+}
+
+#dinheiro{
+	opacity: 0;
+	transition: opacity 1.0s;
+	position: absolute;
+}
 
 .navbar a{
     list-style: none;

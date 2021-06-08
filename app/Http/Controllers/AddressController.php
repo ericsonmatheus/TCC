@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carrinho;
+use App\Models\Comanda;
 use App\Models\Endereco;
 use Illuminate\Http\Request;
 
@@ -31,9 +31,9 @@ class AddressController extends Controller
 
     public function addAddressToSession($idcart) {
         
-        $cart = Carrinho::where('id', $idcart)->first();
+        $cart = Comanda::where('id', $idcart)->first();
 
-        $cart->idendereco = session('sessionUser.cart.endereco.id');
+        $cart->id = session('sessionUser.cart.endereco.id');
 
         $cart->save();
     }

@@ -1,5 +1,5 @@
 <?php 
 
 function formatPrice($preco) {
-    return number_format($preco, 2, ',','.');
+    return "R$ " . number_format($preco, 2, ',','.');
 }

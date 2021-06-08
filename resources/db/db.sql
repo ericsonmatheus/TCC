@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS lanches (
   id INT NOT NULL AUTO_INCREMENT,
   nomeLanche VARCHAR(45) NOT NULL,
-  descricao VARCHAR(45) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
   pathlanche VARCHAR(255),
   valor DOUBLE NOT NULL,
   updated_at TIMESTAMP NULL,
@@ -82,14 +82,14 @@ CREATE TABLE IF NOT EXISTS funcionarios (
     REFERENCES enderecos (id))
 ENGINE = InnoDB;
 
-insert into funcionarios(nome, email, login, senha) values ('Administrador', 'adm@adm.com', 'admburguer', '$2y$10$xCn7AwpNIoYz10c.Xz4jluPzktf7AKLMhmwlaaGYPiMoL4KJJ5eXi');
+insert into funcionarios(nome, email, login, senha) values ('Administrador', 'adm@adm.com', 'admburguer', '$2y$10$VmHKTulRTIbpPQE.Ic5G9ejHM/SaD1Lu3xdGKuMXcZwqVauTqLaGa');
 
 
 
 -- -----------------------------------------------------
 -- Table carrinhos
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS carrinhos (
+CREATE TABLE IF NOT EXISTS comandas (
   id INT NOT NULL AUTO_INCREMENT,
   created_at TIMESTAMP NULL,
   updated_at TIMESTAMP NULL,
@@ -103,17 +103,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table comandas
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS comandas (
+CREATE TABLE IF NOT EXISTS carrinhos (
   id INT NOT NULL AUTO_INCREMENT,
   created_at TIMESTAMP NULL,
   updated_at TIMESTAMP NULL,
   idlanche INT NOT NULL,
-  idcarrinho INT NOT NULL,
+  idcomanda INT NOT NULL,
   PRIMARY KEY (id),
     FOREIGN KEY (idlanche)
     REFERENCES lanches (id),
-    FOREIGN KEY (idcarrinho)
-    REFERENCES carrinhos (id))
+    FOREIGN KEY (idcomanda)
+    REFERENCES comandas (id))
 ENGINE = InnoDB;
 
 

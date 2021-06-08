@@ -31,7 +31,11 @@ Route::get('/carrinho', [AdmController::class, 'cart'])->name('adm.carrinho');
 Route::get('/carrinho/{lanche}/novo', [AdmController::class, 'addLancheToCart'])->name('adm.addComanda');
 Route::get('/localizacao', [AdmController::class, 'location'])->name('adm.localizacao');
 Route::post('/localizacao/addaddress', [AddressController::class, 'addAddress'])->name('adm.addEndereco');
+Route::get('/localizacao/editarEnderecoLoja', [AdmController::class, 'editAddressStore'])->name('adm.editarEndereco');
+Route::post('/localizacao/editEnd', [AdmController::class, 'editEnd'])->name('adm.editEnd');
 Route::get('/configuracao', [AdmController::class, 'setting'])->name('adm.configuracao');
 Route::get('/configuracao/funcionario', [AdmController::class, 'employee'])->name('adm.funcionario');
+Route::post('/configuracao/funcionario/store', [AdmController::class, 'addEmployee'])->name('adm.addFuncionario');
+Route::get('/configuracao/funcionario/delete/{funcionario}', [AdmController::class, 'removeEmployee'])->name('adm.removeFuncionario');
 Route::get('/', [AdmController::class, 'index'])->name('adm.index');
 

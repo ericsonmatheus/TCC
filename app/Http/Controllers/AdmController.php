@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carrinho;
-use App\Models\Categoria;
 use App\Models\Comanda;
+use App\Models\Categoria;
+use App\Models\Carrinho;
 use App\Models\Endereco;
 use App\Models\Funcionario;
 use App\Models\Lanche;
@@ -13,7 +13,19 @@ use Illuminate\Support\Facades\Hash;
 
 class AdmController extends Controller
 {
-    //Verifica se ja foi criado carrinho para o usuário externo.
+
+    public static function sumValue() {
+        $total = Lanche::query('lanches')
+                                ->join('carrinhos', 'carrinhos.idlanche', '=', 'lanches.id')
+                                ->join('comandas', 'comandas.id', '=', 'carrinhos.idcomanda')
+                                ->where('carrinhos.idcomanda', '=', session('sessionUser.cart.id'))
+                                ->select()
+                                ->sum('lanches.valor');
+
+        return $total;
+    }
+
+    //Verifica se ja foi criado comanda para o usuário externo.
     private function checkSessionUser() {
         return session()->has('sessionUser');
     }
@@ -28,13 +40,13 @@ class AdmController extends Controller
         //de existir uma sessão de usuário(cliente)
         if(!$this->checkSessionFunc()) {
             //Se não existir sessão de funcionário, então e um cliente acessando
-            //Enão deverá criar um carrinho para este usuário 
+            //Enão deverá criar um comanda para este usuário 
             if(!$this->checkSessionUser()) {
-                $cart = new Carrinho();
+                $cart = new Comanda();
                 
                 $cart->save();
                 
-                //Criar sessão usuário externo e adicionar um carrinho 
+                //Criar sessão usuário externo e adicionar um comanda 
                 session()->put('sessionUser.cart.id', $cart->id);
             }
         } else {
@@ -51,9 +63,12 @@ class AdmController extends Controller
 
         $lunchs = LunchController::getAllLunch();
     
+        $total = AdmController::sumValue();
+
         return view('index', [
             'lunchs' => $lunchs,
-            'address' => $address
+            'address' => $address,
+            'total' => $total
         ]);
     }
 
@@ -65,9 +80,11 @@ class AdmController extends Controller
     }
     //chamar tela cardapio
     public function menu() {
+
         $this->verifySession();
 
         $category = $this->getCategories();
+
         $lunchs = LunchController::getAllLunch();
 
         return view('cardapio', [
@@ -76,20 +93,24 @@ class AdmController extends Controller
         ]);
     }
 
-    //Função para adicionar um lanche ao carrinho
-    public function addLancheToCart(Lanche $lanche) {
-        $comanda = new Comanda();
+    //Função para adicionar um lanche ao comanda
+    public function addLancheToCart($idlanche) {
 
-        $comanda->idlanche = $lanche->id;
-        $comanda->idcarrinho = session('sessionUser.cart.id');
+        $lanche = Lanche::where('id', $idlanche)->first();
 
-        $comanda->save();
+        $carrinho = new Carrinho();
+
+        $carrinho->idlanche = $lanche->id;
+
+        $carrinho->idcomanda = session('sessionUser.cart.id');
+
+        $carrinho->save();
 
         return redirect()->route('adm.index');
         
     }
 
-    //Função para adicionar um lanche ao carrinho
+    //Função para adicionar um lanche ao comanda
     public function removeLancheToCart(Lanche $lanche) {
         
         ////////////////////////////////////////
@@ -107,19 +128,23 @@ class AdmController extends Controller
 
     public function cart() {
 
-        $pedidos = Comanda::query('comandas')
-                                ->join('carrinhos', 'carrinhos.id', '=', 'comandas.idcarrinho')
-                                ->join('lanches', 'lanches.id', '=', 'comandas.idlanche')
-                                ->where('carrinhos.id', '=', session('sessionUser.cart.id'))
-                                ->select('lanches.*', 'carrinhos.id')
+
+        $pedidos = Carrinho::query('carrinhos')
+                                ->join('comandas', 'comandas.id', '=', 'carrinhos.idcomanda')
+                                ->join('lanches', 'lanches.id', '=', 'carrinhos.idlanche')
+                                ->where('comandas.id', '=', session('sessionUser.cart.id'))
+                                ->select('lanches.*', 'comandas.id')
                                 ->get();
 
         
         $address = Endereco::where('id', session('sessionUser.cart.endereco.id'))->first();
         
-        return view('carrinho', [
+        $valor = $this->sumValue();
+
+        return view('comanda', [
             'pedidos' => $pedidos,
-            'address' => $address
+            'address' => $address,
+            'valor' => $valor
         ]);
     }
 
@@ -132,8 +157,17 @@ class AdmController extends Controller
 
     public function setting() {
 
+        //Verificar se quem está tentando acessar as configurações é o Administrador.
+        if(session('sessionFunc.nome') != "Administrador") {
+            return redirect()->route('adm.cardapio');
+        }
+
+        $funcionarios = Funcionario::all();
+
         $this->verifySession();
-        return view('configuracao');
+        return view('configuracao', [
+            'funcionarios' => $funcionarios
+        ]);
 
     }
 
@@ -141,6 +175,31 @@ class AdmController extends Controller
 
         $this->verifySession();
         return view('funcionario');
+    }
+
+    public function addEmployee(Request $request) {
+        
+        $this->verifySession();
+        
+        $funcionario = New Funcionario();
+
+        $funcionario->nome = $request->nome . " " . $request->sobrenome;
+        $funcionario->email = $request->email;
+        $funcionario->login = strtolower($request->nome . "." . $request->sobrenome);
+        $funcionario->senha = Hash::make($request->senha);
+
+        $funcionario->save();
+
+        return redirect()->route('adm.configuracao');
+    }
+
+    public function removeEmployee(Funcionario $funcionario) {
+        $this->verifySession();
+
+        $funcionario->delete();
+
+        return redirect()->route('adm.configuracao');
+
     }
 
     public function login() {
@@ -159,10 +218,9 @@ class AdmController extends Controller
 
     public function loginPost(Request $request) {
 
-        $adm = Funcionario::where('login', $request->email)->first();
+        $adm = Funcionario::where('login', $request->login)->first();
 
-
-        if(!$adm || Hash::check($request->password, $adm->password)) {
+        if(!$adm || !Hash::check($request->password, $adm->senha)) {
             session()->flash('erro', 'Usuário ou senha Incorreta!');
             return redirect()->route('adm.login');
         } else {
@@ -184,5 +242,7 @@ class AdmController extends Controller
 
         return $result;
     }
+
+    
 
 }

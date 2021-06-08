@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class LunchController extends Controller
 {
     public function createLunch(Request $request) {
-        for($i=0; $i<5;$i++) {
         $lanche = new Lanche();
 
         $category = Categoria::where('nome', $request->categoria)->first();
@@ -17,10 +16,11 @@ class LunchController extends Controller
         $lanche->nomeLanche = $request->nome;
         $lanche->descricao = $request->descricao;
         $lanche->pathLanche = $request->file('imgComida')->store('lanches');
-        $lanche->valor = $request->valor;
+        $lanche->valor = str_replace(',', '.', $request->valor);
         $lanche->idcategoria = $category->id;
 
-        $lanche->save();}
+        $lanche->save();
+        
         return redirect(route('adm.cardapio'));
     }
 

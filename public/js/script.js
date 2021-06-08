@@ -1,4 +1,3 @@
-
 var abrir = document.getElementById('abrirMenu')
 var fechar = document.getElementById('fecharMenu')
 

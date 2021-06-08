@@ -11,23 +11,23 @@
 			<a id="show" class="btn btn-outline-success"><i class="fas fa-plus-square"></i> Adicionar</a>
 		</form>
 		<table class="table">
-			<tbody>
-				@foreach ($lunchs as $lunch)
+			@foreach ($lunchs as $lunch)
+				<tbody>
 					<td>
-						<h2>{{ $lunch->idcategoria }}</h2>
+						<h2>{{ $lunch->nome }}</h2>
 					</td>
 					<tr>
-						<td width="80px" height="80px" min-width="55px" min-height="55px"><img
-								src="{{ env('APP_URL') }}/storage/{{ $lunch->pathlanche }}" alt="Hamburguer"></td>
+						<td><img img width="60vh" height="60vh" 
+								src=" {{ env('APP_URL') }}/storage/{{ $lunch->pathlanche }}" alt="Hamburguer"></td>
 						<td colspan="3">
-							<h2>{{ $lunch->nome }}</h2>
+							<h2>{{ $lunch->nomeLanche }}</h2>
 							<p>{{ $lunch->descricao }}</p>
 						</td>
-						<td>{{ $lunch->valor }}</td>
-						<td><button class="btn btn-primary"><i class="fas fa-plus-square"></i></button></td>
+						<td id="valorLanche">{{ formatPrice($lunch->valor) }}</td>
+						<td id="store"><a href="{{ route('adm.addComanda', $lunch->id) }}"><button class="btn btn-primary"><i class="fas fa-plus-square"></i></button></a></td>
 					</tr>
-				@endforeach
-			</tbody>
+				</tbody>
+			@endforeach
 		</table>
 	</div>
 	<div class="container">
@@ -77,7 +77,7 @@
 					</div>
 					<div class="form-group">
 						<label for="valor">Valor do prato</label>
-						<input type="text" id="dinheiro" name="valor" class="dinheiro form-control" style="display:inline-block" />
+						<input type="text" id="dinheiro1" name="valor" class="dinheiro form-control" style="display:inline-block" />
 					</div>
 				</div>
 				<div id="complemento">

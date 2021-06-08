@@ -14,3 +14,4 @@ class Comanda extends Model
         'idcarrinho',
     ];
 }
+
