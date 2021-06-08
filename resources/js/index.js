@@ -1,3 +1,14 @@
+/*document.querySelector('#quantidade').addEventListener("change", atualizarPreco)
+
+function atualizarPreco(){
+    const qtd = document.querySelector("#quantidade").value
+    const precoBase = parseFloat(document.querySelector("#preco").innerHTML)
+
+    let preco = precoBase * qtd
+
+    document.querySelector("#preco").innerHTML = `R$ ${(preco.toFixed(2).replace('.', ','))}`
+}*/
+
 var abrir = document.getElementById('abrirMenu')
 var fechar = document.getElementById('fecharMenu')
 
@@ -168,4 +179,3 @@ function mostrar(e) {
 
   
 
-$('.dinheiro').mask('#.##0,00', {reverse: true});

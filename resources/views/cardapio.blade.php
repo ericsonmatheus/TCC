@@ -17,8 +17,7 @@
 						<h2>{{ $lunch->nome }}</h2>
 					</td>
 					<tr>
-						<td><img img width="60vh" height="60vh" 
-								src=" {{ env('APP_URL') }}/storage/{{ $lunch->pathlanche }}" alt="Hamburguer"></td>
+						<td><img width="60vh" height="60vh" src="{{ env('APP_URL') }}/storage/{{ $lunch->pathlanche }}" alt="Hamburguer"></td>
 						<td colspan="3">
 							<h2>{{ $lunch->nomeLanche }}</h2>
 							<p>{{ $lunch->descricao }}</p>
