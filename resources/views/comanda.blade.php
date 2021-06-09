@@ -15,7 +15,7 @@
                                 <h2>{{ $pedido->nome }}</h2>
                                 <p>{{ $pedido->descricao }}</p>
                             </td>
-                            <td>R$ {{formatPrice($pedido->valor)}}</td>
+                            <td>{{formatPrice($pedido->valor)}}</td>
                             <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
                         </tr> 
                     @endforeach  
@@ -46,6 +46,13 @@
                 @else
                     <tr>
                         <td colspan="5">Sem endereço cadastrado</td>
+                        @if($errors->all())
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $erro)
+                                    <p>{{$erro}}</p>
+                                @endforeach
+                            </div>
+                        @endif
                         <td><a href="{{ route('adm.localizacao')}}"><i class="fas fa-edit"></i> Adicionar Endereço</a></td>
                     </tr>
                 @endif
@@ -82,11 +89,11 @@
                 <tr>
                     <td>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="optCartao" name="option" class="custom-control-input">
+                            <input type="radio" id="optCartao" name="option" value="Cartão" class="custom-control-input">
                             <label class="custom-control-label" for="optCartao">Cartão</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="optDinheiro" name="option" class="custom-control-input">
+                            <input type="radio" id="optDinheiro" name="option" value="Dinheiro" class="custom-control-input">
                             <label class="custom-control-label" for="optDinheiro">Dinheiro</label>
                         </div>
                     </td>
@@ -94,7 +101,7 @@
                 <div id="show-cartao">
                     <tr>
                         <td colspan="6">
-                            <form action="" id="cartao">
+                            <form action="" name="cartao" id="cartao">
                                 <p style="font-weight: bold;">cartão</p>
                                 <div class="form-group">
                                     <div class="row">
@@ -120,14 +127,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6">
-                            <form action="" id="cartao">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="entregaCartao" name="entregaCartao"class="custom-control-input">
+                                    <input type="checkbox" id="entregaCartao" style="margin-top: 2rem;" name="entregaCartao"class="custom-control-input">
                                     <label class="custom-control-label" for="entregaCartao"> Pagar com cartão na entrega?</label>
                                 </div>
                             </form>
@@ -138,38 +139,53 @@
                 <div id="show-dinheiro">
                     <tr>
                         <td colspan="6">
-                            <form action="" id="dinheiro">
+                            <form action="" name="din" id="din">
                                 <p style="font-weight: bold;">Dinheiro</p>
-                            </form>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td colspan="5">
-                            <form action="" id="dinheiro">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="troco" name="troco" class="custom-control-input">
+                                    <input type="checkbox" id="troco" name="troco" class="custom-control-input">
                                     <label class="custom-control-label" for="troco"> Vai precisar de troco?</label>
                                 </div>
+                                <input class="form-control" id="dintroco" name="din" style="margin-top: 1rem" type="text" placeholder="Para quanto?" disabled>
                             </form>
                         </td>
-                        <td>
-                            <form action="" id="dinheiro">
-                                <input class="form-control" type="text" placeholder="Troco para quanto?">
-                            </form>
-                        </td>
-
                     </tr>
                 </div>
             </tbody>
 
         </table>
 
-        <button type="button" style="background: orange; margin-bottom: 30px;"
-            class="button-large btn  btn-lg btn-block">Finalizar</button>
+        <a href="{{route('adm.finalizar')}}"><button type="submit" style="background: orange; margin-bottom: 30px;"
+            class="button-large btn  btn-lg btn-block">Finalizar</button></a>
     </div>
 
 </section>
 
 </body>
+
+<script>
+    document.getElementById("optCartao").addEventListener('click', function(){
+        var din = document.getElementById('din')
+        din.style.position = "absolute"
+        din.style.opacity = 0
+        var card = document.getElementById('cartao')
+        card.style.position = "relative"
+        card.style.opacity = 1
+    })
+    document.getElementById("optDinheiro").addEventListener('click', function(){
+        var card = document.getElementById('cartao')
+        card.style.position = "absolute"
+        card.style.opacity = 0
+        var din = document.getElementById('din')
+        din.style.position = "relative"
+        din.style.opacity = 1
+    })
+    document.getElementById("troco").addEventListener('change', function(){
+        
+        if(this.checked) {
+            document.din.din.disabled = 0;
+        } else {
+            document.din.din.disabled = 1;
+        }
+    })
+</script>
 @include('footer')

@@ -10,8 +10,8 @@ class Comanda extends Model
     use HasFactory;
 
     protected $fillable = [
-        'idlanche',
-        'idcarrinho',
+        'id',
+        'idendereco',
     ];
 }
 

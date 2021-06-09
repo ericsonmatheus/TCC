@@ -232,7 +232,7 @@ footer{
 	position: absolute;
 }
 
-#dinheiro{
+#din{
 	opacity: 0;
 	transition: opacity 1.0s;
 	position: absolute;

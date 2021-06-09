@@ -117,6 +117,52 @@ class AdmController extends Controller
 
     }
 
+    public function pay() {
+
+        $troco = "<script>document.write(troco)</script>";
+
+        dd($troco);exit;
+
+        $rua = session('sessionUser.cart.endereco.rua');
+        $complemento =  session('sessionUser.cart.endereco.complemento');
+        $numero = session('sessionUser.cart.endereco.numero');
+        $bairro = session('sessionUser.cart.endereco.bairro');
+        $cidade = session('sessionUser.cart.endereco.cidade');
+        $cep = session('sessionUser.cart.endereco.cep');
+
+        if($rua == null || $bairro == null || $cidade == null || $cep== null) {
+            session()->flash('erro', 'Adicione um endereço para o qual será enviado o lanche');
+
+            return redirect()->back()->withInput()->withErrors(['• Adicione um endereço para a entrega']);
+        }
+
+        $id = session('sessionUser.cart.id');
+
+        $whatsapp = 'https://api.whatsapp.com/send?phone=5561998811404&text=';
+
+        $idCompra = "*Pedido BurguerBoss nº " . $id . "*%0A";
+
+        $divisor = "-------------------------------------%0A%0A";
+
+        $whatsapp .= $idCompra . $divisor;
+
+        $whatsapp .= "*Taxa de Entrega*: R$ 4,99%0A";
+
+        $total = AdmController::sumValue() + 4.99;
+
+        $whatsapp .= "*Total: R$ $total*%0A" . $divisor;
+
+        $whatsapp .= "*Tempo para entrega:* de 30 minutos à 45 minutos%0A%0A";
+
+        $whatsapp .= "$rua, $complemento $numero%0A$bairro, $cidade%0A$cep%0A%0A";
+
+        $whatsapp .= "*Pagamento:* Dinheiro%0A";
+
+        $whatsapp .= "*Troco para:* R$ 00,00";
+        
+        return redirect($whatsapp);
+    }
+
     //chamar tela sobre
     public function about() {
         return view('sobre');
@@ -141,10 +187,21 @@ class AdmController extends Controller
         
         $valor = $this->sumValue();
 
+        $erro = session('erro');
+
+        $data = [];
+
+        if(!empty($erro)){
+            $data = [
+                'erro' => $erro
+            ];
+        }
+
         return view('comanda', [
             'pedidos' => $pedidos,
             'address' => $address,
-            'valor' => $valor
+            'valor' => $valor,
+            'error' => $data
         ]);
     }
 

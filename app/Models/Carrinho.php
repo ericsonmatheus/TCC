@@ -10,7 +10,7 @@ class Carrinho extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
-        'idendereco',
+        'idlanche',
+        'idcarrinho',
     ];
 }

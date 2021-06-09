@@ -23,9 +23,10 @@ class AddressController extends Controller
         $endereco->save();
 
         session()->put('sessionUser.cart.endereco', $endereco);
-
+        
+        
         $this->addAddressToSession(session('sessionUser.cart.id'));
-
+        
         return redirect()->route('adm.index');
     }
 
