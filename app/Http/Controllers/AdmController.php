@@ -62,7 +62,7 @@ class AdmController extends Controller
         $address = Endereco::where('id', session('sessionUser.cart.endereco.id'))->first();
 
         $lunchs = LunchController::getAllLunch();
-    
+
         $total = AdmController::sumValue();
 
         return view('index', [
@@ -106,22 +106,20 @@ class AdmController extends Controller
 
         $carrinho->save();
 
-        return redirect()->route('adm.index');
+        return redirect()->back();
         
     }
 
     //Função para adicionar um lanche ao comanda
     public function removeLancheToCart(Lanche $lanche) {
         
-        ////////////////////////////////////////
+        Carrinho::where('idlanche', '=', $lanche->id)->first()->delete();
+
+        return redirect()->back();
 
     }
 
     public function pay() {
-
-        $troco = "<script>document.write(troco)</script>";
-
-        dd($troco);exit;
 
         $rua = session('sessionUser.cart.endereco.rua');
         $complemento =  session('sessionUser.cart.endereco.complemento');
@@ -145,6 +143,8 @@ class AdmController extends Controller
         $divisor = "-------------------------------------%0A%0A";
 
         $whatsapp .= $idCompra . $divisor;
+
+        
 
         $whatsapp .= "*Taxa de Entrega*: R$ 4,99%0A";
 
@@ -175,14 +175,8 @@ class AdmController extends Controller
     public function cart() {
 
 
-        $pedidos = Carrinho::query('carrinhos')
-                                ->join('comandas', 'comandas.id', '=', 'carrinhos.idcomanda')
-                                ->join('lanches', 'lanches.id', '=', 'carrinhos.idlanche')
-                                ->where('comandas.id', '=', session('sessionUser.cart.id'))
-                                ->select('lanches.*', 'comandas.id')
-                                ->get();
+        $pedidos = $this->allPedidos();
 
-        
         $address = Endereco::where('id', session('sessionUser.cart.endereco.id'))->first();
         
         $valor = $this->sumValue();
@@ -300,6 +294,14 @@ class AdmController extends Controller
         return $result;
     }
 
-    
+    public function allPedidos(){
+        return Carrinho::query('carrinhos')
+        ->join('comandas', 'comandas.id', '=', 'carrinhos.idcomanda')
+        ->join('lanches', 'lanches.id', '=', 'carrinhos.idlanche')
+        ->where('comandas.id', '=', session('sessionUser.cart.id'))
+        ->select('lanches.*', 'comandas.id', 'carrinhos.idlanche', Lanche::raw('count(carrinhos.idlanche) as qtd'))
+        ->groupBy('lanches.id')
+        ->get();
+    }
 
 }

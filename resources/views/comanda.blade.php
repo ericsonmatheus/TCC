@@ -11,12 +11,14 @@
                     @foreach ($pedidos as $pedido)
                         <tr>
                             <td ><img width="60vh" height="60vh" src="{{ env('APP_URL') }}/storage/{{ $pedido->pathlanche }}" alt="Hamburguer"></td>
-                            <td colspan="3">
+                            <td colspan="1">
                                 <h2>{{ $pedido->nome }}</h2>
                                 <p>{{ $pedido->descricao }}</p>
                             </td>
-                            <td>{{formatPrice($pedido->valor)}}</td>
-                            <td><input class="form-control" value="1" type="number" name="quantidade" id="quantidade" min="0"></td>
+                            <td>{{formatPrice($pedido->valor * $pedido->qtd)}}</td>
+                            <td colspan="1" id="store"><a href="{{ route('adm.removeComanda', $pedido->idlanche) }}"><button class="btn btn-danger"><i class="fa fa-minus"></i></button></a></td>
+                            <td class="col-md-2 col-sm-2 col-2"><input class="form-control" value="{{$pedido->qtd}}" type="number" name="quantidade" id="quantidade" min="0"></td>
+                            <td id="store"><a href="{{ route('adm.addComanda', $pedido->idlanche) }}"><button class="btn btn-primary"><i class="fas fa-plus-square"></i></button></a></td>
                         </tr> 
                     @endforeach  
                 @else

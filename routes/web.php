@@ -30,6 +30,7 @@ Route::get('/contato', [AdmController::class, 'contact'])->name('adm.contato');
 Route::get('/carrinho', [AdmController::class, 'cart'])->name('adm.carrinho');
 Route::get('/carrinho/comprar', [AdmController::class, 'pay'])->name('adm.finalizar');
 Route::get('/carrinho/{lanche}/novo', [AdmController::class, 'addLancheToCart'])->name('adm.addComanda');
+Route::get('/carrinho/{lanche}/delete', [AdmController::class, 'removeLancheToCart'])->name('adm.removeComanda');
 Route::get('/localizacao', [AdmController::class, 'location'])->name('adm.localizacao');
 Route::post('/localizacao/addaddress', [AddressController::class, 'addAddress'])->name('adm.addEndereco');
 Route::post('/localizacao/editEnd', [AdmController::class, 'editEnd'])->name('adm.editEnd');

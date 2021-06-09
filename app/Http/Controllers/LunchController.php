@@ -27,7 +27,7 @@ class LunchController extends Controller
     public static function getAllLunch() {
         $lanches = Lanche::query('lanches')
                                 ->join('categorias', 'categorias.id', '=', 'lanches.idcategoria')
-                                ->select('lanches.*', 'categorias.*')
+                                ->select('lanches.*', 'categorias.nome')
                                 ->get();
 
         return $lanches;
